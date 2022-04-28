@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var categorys: [category] = [category(categoryName: "1일 1커밋", categoryDescription: "1일 1커밋을 꾸준히 합시다!", categoryImage: "git"), category(categoryName: "@!#!@#", categoryDescription: "!@#!@#!@#!@#!@##@!", categoryImage: "git")]
+    @State var categorys: [category] = [category(categoryName: "1일 1커밋", categoryDescription: "1일 1커밋을 꾸준히 합시다!", categoryImage: "git")]
+    @State var posts: [post] = [post(categoryName: "1일 1커밋", title: "4월 20일 기록", description: "알고리즘 풀이를 커밋했다."), post(categoryName: "손씻기", title: "4월 21일 기록", description: "4월 21일 12시에 손을 씻었다.")]
     var body: some View {
         GeometryReader { geometry in
             NavigationView {
@@ -22,14 +23,14 @@ struct ContentView: View {
                             .navigationBarTitle("One Challenge", displayMode: .inline)
                         Button(action: {
                         }) {
-                            NavigationLink(destination: AddCategoryView()) {
+                            NavigationLink(destination: AddCategoryView(categorys: $categorys)) {
                                 Text("습관 등록하기")
                             }
                         }
                         .buttonStyle(customButtonStyle())
                     }
                     ForEach(categorys, id: \.self) { category in
-                        NavigationLink( destination: CategoryDetailView(categoryName: category.categoryName)) {
+                        NavigationLink( destination: CategoryDetailView(categoryName: category.categoryName, posts: $posts)) {
                             CardView(categoryName: category.categoryName, categoryDescription: category.categoryDescription, categoryImage: category.categoryImage)
                         }
                     }

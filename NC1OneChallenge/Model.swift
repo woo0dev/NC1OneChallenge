@@ -4,3 +4,8 @@ struct category: Hashable {
     var categoryDescription: String
     var categoryImage: String
 }
+struct post: Hashable {
+    var categoryName: String
+    var title: String
+    var description: String
+}

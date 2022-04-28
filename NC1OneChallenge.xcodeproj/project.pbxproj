@@ -16,6 +16,8 @@
 		E2A1324A281ACA9100AE12BC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A13249281ACA9100AE12BC /* Model.swift */; };
 		E2A1324C281AD1D700AE12BC /* CategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1324B281AD1D700AE12BC /* CategoryDetailView.swift */; };
 		E2A1324F281AD65500AE12BC /* BMJUA_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = E2A1324E281AD65500AE12BC /* BMJUA_otf.otf */; };
+		E2F6A0B5281ADD80006F5371 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */; };
+		E2F6A0B9281AEE66006F5371 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		E2A1324B281AD1D700AE12BC /* CategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailView.swift; sourceTree = "<group>"; };
 		E2A1324E281AD65500AE12BC /* BMJUA_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMJUA_otf.otf; sourceTree = "<group>"; };
 		E2A13250281AD67400AE12BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
+		E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 				E2A1324B281AD1D700AE12BC /* CategoryDetailView.swift */,
 				E2A13237281AC81600AE12BC /* NC1OneChallengeApp.swift */,
 				E2A13239281AC81600AE12BC /* ContentView.swift */,
+				E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */,
+				E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */,
 			);
 			path = NC1OneChallenge;
 			sourceTree = "<group>";
@@ -164,7 +170,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2A1324A281ACA9100AE12BC /* Model.swift in Sources */,
+				E2F6A0B5281ADD80006F5371 /* KeyboardExtension.swift in Sources */,
 				E2A13246281AC92400AE12BC /* AddCategoryView.swift in Sources */,
+				E2F6A0B9281AEE66006F5371 /* PostDetailView.swift in Sources */,
 				E2A1323A281AC81600AE12BC /* ContentView.swift in Sources */,
 				E2A13248281AC99B00AE12BC /* CardView.swift in Sources */,
 				E2A13238281AC81600AE12BC /* NC1OneChallengeApp.swift in Sources */,
