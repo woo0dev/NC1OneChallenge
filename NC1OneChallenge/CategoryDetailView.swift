@@ -13,10 +13,29 @@ struct CategoryDetailView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {
-                Text("\(categoryName)")
-                    .font(.custom("BMJUAOTF", size: 40))
-                    .foregroundColor(Color("MainColor"))
-                    .padding(10)
+                HStack {
+                    Text("\(categoryName)")
+                        .font(.custom("BMJUAOTF", size: 40))
+                        .foregroundColor(Color("MainColor"))
+                        .padding(10)
+                    Spacer()
+                    Button(action: {
+                    }) {
+                        NavigationLink(destination: AddPostView(categoryName: categoryName, posts: $posts)) {
+                            Text("글 작성하기")
+                        }
+                    }
+                    .frame(width: 100, height: 40)
+                    .font(.custom("BMJUAOTF", size: 20))
+                    .foregroundColor(Color.white)
+                    .background(Color("MainColor"))
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color("MainColor"), lineWidth: 1)
+                    )
+                }
+                .padding([.trailing], 10)
                 ForEach(posts, id: \.self) { post in
                     NavigationLink( destination: PostDetailView(title: post.title, description: post.description)) {
                         if post.categoryName == categoryName {

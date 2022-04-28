@@ -18,6 +18,7 @@
 		E2A1324F281AD65500AE12BC /* BMJUA_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = E2A1324E281AD65500AE12BC /* BMJUA_otf.otf */; };
 		E2F6A0B5281ADD80006F5371 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */; };
 		E2F6A0B9281AEE66006F5371 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */; };
+		E2F6A0BB281AFAB6006F5371 /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0BA281AFAB6006F5371 /* AddPostView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		E2A13250281AD67400AE12BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
+		E2F6A0BA281AFAB6006F5371 /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				E2A13239281AC81600AE12BC /* ContentView.swift */,
 				E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */,
 				E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */,
+				E2F6A0BA281AFAB6006F5371 /* AddPostView.swift */,
 			);
 			path = NC1OneChallenge;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2A1324A281ACA9100AE12BC /* Model.swift in Sources */,
+				E2F6A0BB281AFAB6006F5371 /* AddPostView.swift in Sources */,
 				E2F6A0B5281ADD80006F5371 /* KeyboardExtension.swift in Sources */,
 				E2A13246281AC92400AE12BC /* AddCategoryView.swift in Sources */,
 				E2F6A0B9281AEE66006F5371 /* PostDetailView.swift in Sources */,
