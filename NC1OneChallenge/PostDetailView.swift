@@ -8,13 +8,10 @@
 import SwiftUI
 
 struct PostDetailView: View {
+    @State var title: String
+    @State var description: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct PostDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        PostDetailView()
+        Text(title)
+        Text(description)
     }
 }
