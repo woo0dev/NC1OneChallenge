@@ -14,16 +14,23 @@ struct CardView: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                Text("\(categoryName)")
+                VStack {
+                    Text("\(categoryName)")
                     .foregroundColor(Color("MainColor"))
                     .font(.custom("BMJUAOTF", size: 27))
-                categoryImage
-                    .resizable()
-                    .frame(width: 250, height: 125)
-                    .padding(.horizontal, 35)
-                Text("\(categoryDescription)")
-                    .foregroundColor(Color("BlackColor"))
-                    .font(.custom("BMJUAOTF", size: 16))
+                }
+                VStack {
+                    categoryImage
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 250, height: 125)
+                        .padding(.horizontal, 35)
+                }
+                VStack {
+                    Text("\(categoryDescription)")
+                        .foregroundColor(Color("BlackColor"))
+                        .font(.custom("BMJUAOTF", size: 16))
+                }
                 HStack {
                     Spacer()
                 }

@@ -13,9 +13,17 @@ struct PostDetailView: View {
     @State var categoryName: String
     @State var title: String
     @State var description: String
+    @State var postImage: Image
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {
+                VStack {
+                    postImage
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 250, height: 125)
+                        .padding(.horizontal, 35)
+                }
                 VStack {
                     Text("\(title)")
                         .font(.custom("BMJUAOTF", size: 40))
@@ -35,7 +43,7 @@ struct PostDetailView: View {
                 }
                 VStack {
                     Button(action: {
-                        if let index = posts.firstIndex(of: post(categoryName: categoryName, title: title, description: description)) {
+                        if let index = posts.firstIndex(of: post(categoryName: categoryName, title: title, description: description, image: postImage)) {
                             posts.remove(at: index)
                         }
                         self.presentationMode.wrappedValue.dismiss()
