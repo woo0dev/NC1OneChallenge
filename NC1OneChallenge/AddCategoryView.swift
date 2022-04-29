@@ -12,9 +12,24 @@ struct AddCategoryView: View {
     @Binding var categorys: [category]
     @State var categoryName: String = ""
     @State var categoryDescription: String = ""
+    @State private var imagePickerPresented = false
+    @State private var selectedImage: UIImage?
+    @State private var profileImage: Image?
     var body: some View {
         VStack(alignment: .leading) {
-            
+            Button(action: {
+                imagePickerPresented.toggle()
+            }, label: {
+                let image = profileImage == nil ? Image(systemName: "plus.circle") : profileImage ?? Image(systemName: "plus.circle")
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 64, height: 64)
+                    .clipShape(Circle())
+            })
+            .sheet(isPresented: $imagePickerPresented,
+                   onDismiss: loadImage,
+                   content: { ImagePicker(image: $selectedImage) })
             Text("습관 이름")
                 .font(.custom("BMJUAOTF", size: 30))
             TextField("", text: $categoryName)
@@ -36,7 +51,7 @@ struct AddCategoryView: View {
                 .font(.custom("BMJUAOTF", size: 30))
                 .onAppear(perform: UIApplication.shared.hideKeyboard)
             Button(action: {
-                categorys.append(category(categoryName: categoryName, categoryDescription: categoryDescription, categoryImage: ""))
+                categorys.append(category(categoryName: categoryName, categoryDescription: categoryDescription, categoryImage: profileImage == nil ? Image(systemName: "plus.circle") : profileImage!))
                 self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("등록하기")
@@ -44,6 +59,10 @@ struct AddCategoryView: View {
             .buttonStyle(customButtonStyle())
         }
         .padding(20)
+    }
+    func loadImage() {
+        guard let selectedImage = selectedImage else { return }
+        profileImage = Image(uiImage: selectedImage)
     }
 }
 

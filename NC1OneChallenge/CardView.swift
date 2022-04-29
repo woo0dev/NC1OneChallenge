@@ -10,14 +10,14 @@ import SwiftUI
 struct CardView: View {
     @State var categoryName: String
     @State var categoryDescription: String
-    @State var categoryImage: String
+    @State var categoryImage: Image
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
                 Text("\(categoryName)")
                     .foregroundColor(Color("MainColor"))
                     .font(.custom("BMJUAOTF", size: 27))
-                Image(categoryImage)
+                categoryImage
                     .resizable()
                     .frame(width: 250, height: 125)
                     .padding(.horizontal, 35)

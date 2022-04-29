@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var categorys: [category] = [category(categoryName: "1일 1커밋", categoryDescription: "1일 1커밋을 꾸준히 합시다!", categoryImage: "git")]
+    @State var categorys: [category] = [category(categoryName: "1일 1커밋", categoryDescription: "1일 1커밋을 꾸준히 합시다!", categoryImage: Image("git"))]
     @State var posts: [post] = [post(categoryName: "1일 1커밋", title: "4월 20일 기록", description: "알고리즘 풀이를 커밋했다."), post(categoryName: "손씻기", title: "4월 21일 기록", description: "4월 21일 12시에 손을 씻었다.")]
     var body: some View {
         GeometryReader { geometry in
