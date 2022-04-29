@@ -37,7 +37,7 @@ struct CategoryDetailView: View {
                 }
                 .padding([.trailing], 10)
                 ForEach(posts, id: \.self) { post in
-                    NavigationLink( destination: PostDetailView(posts: $posts, title: post.title, description: post.description)) {
+                    NavigationLink( destination: PostDetailView(posts: $posts, categoryName: post.categoryName, title: post.title, description: post.description)) {
                         if post.categoryName == categoryName {
                             Text("\(post.title)")
                                 .font(.custom("BMJUAOTF", size: 25))

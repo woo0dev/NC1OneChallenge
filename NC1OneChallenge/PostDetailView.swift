@@ -10,6 +10,7 @@ import SwiftUI
 struct PostDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Binding var posts: [post]
+    @State var categoryName: String
     @State var title: String
     @State var description: String
     var body: some View {
@@ -34,9 +35,9 @@ struct PostDetailView: View {
                 }
                 VStack {
                     Button(action: {
-//                        if let index = posts.firstIndex(of: post) {
-//                            posts.remove(at: index)
-//                        }
+                        if let index = posts.firstIndex(of: post(categoryName: categoryName, title: title, description: description)) {
+                            posts.remove(at: index)
+                        }
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("삭제하기")

@@ -19,6 +19,7 @@
 		E2F6A0B5281ADD80006F5371 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */; };
 		E2F6A0B9281AEE66006F5371 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */; };
 		E2F6A0BB281AFAB6006F5371 /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0BA281AFAB6006F5371 /* AddPostView.swift */; };
+		E2F6A0BD281BC86B006F5371 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0BC281BC86B006F5371 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		E2F6A0BA281AFAB6006F5371 /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
+		E2F6A0BC281BC86B006F5371 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */,
 				E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */,
 				E2F6A0BA281AFAB6006F5371 /* AddPostView.swift */,
+				E2F6A0BC281BC86B006F5371 /* ImagePicker.swift */,
 			);
 			path = NC1OneChallenge;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				E2F6A0B9281AEE66006F5371 /* PostDetailView.swift in Sources */,
 				E2A1323A281AC81600AE12BC /* ContentView.swift in Sources */,
 				E2A13248281AC99B00AE12BC /* CardView.swift in Sources */,
+				E2F6A0BD281BC86B006F5371 /* ImagePicker.swift in Sources */,
 				E2A13238281AC81600AE12BC /* NC1OneChallengeApp.swift in Sources */,
 				E2A1324C281AD1D700AE12BC /* CategoryDetailView.swift in Sources */,
 			);

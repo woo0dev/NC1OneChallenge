@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct AddCategoryView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Binding var categorys: [category]
     @State var categoryName: String = ""
     @State var categoryDescription: String = ""
     var body: some View {
         VStack(alignment: .leading) {
+            
             Text("습관 이름")
                 .font(.custom("BMJUAOTF", size: 30))
             TextField("", text: $categoryName)
@@ -35,6 +37,7 @@ struct AddCategoryView: View {
                 .onAppear(perform: UIApplication.shared.hideKeyboard)
             Button(action: {
                 categorys.append(category(categoryName: categoryName, categoryDescription: categoryDescription, categoryImage: ""))
+                self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("등록하기")
             }
