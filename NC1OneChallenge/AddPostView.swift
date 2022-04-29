@@ -61,7 +61,12 @@ struct AddPostView: View {
                         .font(.custom("BMJUAOTF", size: 20))
                         .onAppear(perform: UIApplication.shared.hideKeyboard)
                     Button(action: {
-                        posts.append(post(categoryName: categoryName, title: title, description: description, image: profileImage == nil ? Image(systemName: "plus.circle") : profileImage!))
+                        let nowDate = Date() // 현재의 Date (ex: 2020-08-13 09:14:48 +0000)
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+                        dateFormatter.locale = Locale(identifier: "ko_KR")
+                        let convertDate = dateFormatter.string(from: nowDate)
+                        posts.append(post(categoryName: categoryName, title: title, description: description, image: profileImage == nil ? Image(systemName: "plus.circle") : profileImage!, date: convertDate))
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("등록하기")

@@ -14,10 +14,13 @@ struct post: Hashable {
     var title: String
     var description: String
     var image: Image
+    var date: String
+    
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(categoryName)
         hasher.combine(title)
         hasher.combine(description)
+        hasher.combine(date)
     }
 }
