@@ -20,16 +20,27 @@ struct AddCategoryView: View {
             Button(action: {
                 imagePickerPresented.toggle()
             }, label: {
-                let image = profileImage == nil ? Image(systemName: "plus.circle") : profileImage ?? Image(systemName: "plus.circle")
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 64, height: 64)
-                    .clipShape(Circle())
+                VStack {
+                    let image = profileImage == nil ? Image(systemName: "plus.circle") : profileImage ?? Image(systemName: "plus.circle")
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 64, height: 64)
+                        .clipShape(Circle())
+                    Text("사진 선택하기")
+                        .foregroundColor(Color("BlackColor"))
+                }
+                .padding(20)
             })
             .sheet(isPresented: $imagePickerPresented,
                    onDismiss: loadImage,
                    content: { ImagePicker(image: $selectedImage) })
+            .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color("MainColor"), lineWidth: 1)
+                    )
+            .padding(.bottom, 20)
             Text("습관 이름")
                 .font(.custom("BMJUAOTF", size: 30))
             TextField("", text: $categoryName)

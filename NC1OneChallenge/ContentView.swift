@@ -17,21 +17,44 @@ struct ContentView: View {
                     VStack {
                         Text("다양한 습관들을 살펴보세요!")
                             .font(.custom("BMJUAOTF", size: 27))
-                            .padding([.leading], 20)
+                            .padding([.leading], 5)
                             .padding([.trailing], 55)
                             .padding([.top], 20)
                             .navigationBarTitle("One Challenge", displayMode: .inline)
-                        Button(action: {
-                        }) {
-                            NavigationLink(destination: AddCategoryView(categorys: $categorys)) {
-                                Text("습관 등록하기")
+//                        Button(action: {
+//                        }) {
+//                            NavigationLink(destination: AddCategoryView(categorys: $categorys)) {
+//                                Text("습관 등록하기")
+//                            }
+//                        }
+//                        .buttonStyle(customButtonStyle())
+                    }
+                    VStack {
+                        NavigationLink(destination: AddCategoryView(categorys: $categorys)) {
+                            VStack {
+                                Image(systemName: "plus.circle")
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(Color.gray)
+                                    .padding([.bottom], 10)
+                                Text("습관을 등록해보세요!")
+                                    .bold()
+                                    .foregroundColor(Color("BlackColor"))
                             }
                         }
-                        .buttonStyle(customButtonStyle())
                     }
-                    ForEach(categorys, id: \.self) { category in
-                        NavigationLink( destination: CategoryDetailView(categoryName: category.categoryName, posts: $posts)) {
-                            CardView(categoryName: category.categoryName, categoryDescription: category.categoryDescription, categoryImage: category.categoryImage)
+                    .frame(width: geometry.size.width-20, height: 150)
+                    .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color("MainColor"), lineWidth: 1)
+                            )
+                            .padding([.top, .horizontal])
+                    VStack {
+                        ForEach(categorys, id: \.self) { category in
+                            NavigationLink( destination: CategoryDetailView(categoryName: category.categoryName, posts: $posts)) {
+                                CardView(categoryName: category.categoryName, categoryDescription: category.categoryDescription, categoryImage: category.categoryImage)
+                            }
                         }
                     }
                 }
