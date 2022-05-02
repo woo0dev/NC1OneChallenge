@@ -12,22 +12,27 @@ struct CardView: View {
     @State var categoryDescription: String
     @State var categoryImage: Image
     var body: some View {
-        GeometryReader { geometry in
+        //GeometryReader { geometry in
+        VStack {
             ZStack {
                 categoryImage
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 250, height: 125)
+                    .frame(width: 370, height: 200)
                     .padding(.horizontal, 35)
                     .scaledToFit()
                 Text("\(categoryName)")
+                    .frame(maxWidth: 300, alignment: .leading)
                     .foregroundColor(Color("MainColor"))
                     .font(.custom("BMJUAOTF", size: 27))
-                    .offset(x: -125, y: 45)
+                    .offset(x: -23, y: 45)
+                    .lineLimit(1)
                 Text("\(categoryDescription)")
+                    .frame(maxWidth: 300, alignment: .leading)
                     .foregroundColor(Color("BlackColor"))
                     .font(.custom("BMJUAOTF", size: 16))
-                    .offset(x: -90, y: 75)
+                    .offset(x: -23, y: 75)
+                    .lineLimit(1)
     //            VStack(alignment: .leading) {
     //                VStack {
     //                    categoryImage
@@ -53,13 +58,14 @@ struct CardView: View {
     //            }
     //            .padding()
             }
-            .frame(width: geometry.size.width-32, height: 200)
+            .frame(width: 370, height: 200)
             .cornerRadius(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color("MainColor"), lineWidth: 1)
                     )
                     .padding([.top, .horizontal])
+        //}
         }
     }
 }
