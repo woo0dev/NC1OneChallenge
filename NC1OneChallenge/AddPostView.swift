@@ -18,73 +18,76 @@ struct AddPostView: View {
     @State private var profileImage: Image?
     var body: some View {
         GeometryReader { geometry in
-            VStack(alignment: .leading) {
-                VStack {
-                    Text("\(categoryName)")
-                        .font(.custom("BMJUAOTF", size: 40))
-                        .foregroundColor(Color("MainColor"))
-                        .padding(10)
-                }
+            ScrollView {
                 VStack(alignment: .leading) {
-                    Button(action: {
-                        imagePickerPresented.toggle()
-                    }, label: {
-                        VStack {
-                            let image = profileImage == nil ? Image(systemName: "plus.circle") : profileImage ?? Image(systemName: "plus.circle")
-                            image
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 64, height: 64)
-                                .clipShape(Circle())
-                            Text("사진 선택하기")
-                                .foregroundColor(Color("BlackColor"))
-                        }
-                        .padding(20)
-                    })
-                    .sheet(isPresented: $imagePickerPresented,
-                           onDismiss: loadImage,
-                           content: { ImagePicker(image: $selectedImage) })
-                    .cornerRadius(10)
+                    VStack {
+                        Text("\(categoryName)")
+                            .font(.custom("BMJUAOTF", size: 40))
+                            .foregroundColor(Color("MainColor"))
+                            .padding(10)
+                    }
+                    VStack(alignment: .leading) {
+                        Button(action: {
+                            imagePickerPresented.toggle()
+                        }, label: {
+                            VStack {
+                                let image = profileImage == nil ? Image(systemName: "plus.circle") : profileImage ?? Image(systemName: "plus.circle")
+                                image
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 64, height: 64)
+                                    .clipShape(Circle())
+                                Text("사진 선택하기")
+                                    .foregroundColor(Color("BlackColor"))
+                            }
+                            .padding(20)
+                        })
+                        .sheet(isPresented: $imagePickerPresented,
+                               onDismiss: loadImage,
+                               content: { ImagePicker(image: $selectedImage) })
+                        .cornerRadius(10)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color("MainColor"), lineWidth: 1)
+                                )
+                        .padding(.bottom, 20)
+                        Text("제목")
+                            .font(.custom("BMJUAOTF", size: 30))
+                        TextField("", text: $title)
+                            .frame(width: geometry.size.width-39, height: 40)
+                            .cornerRadius(10)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color("MainColor"), lineWidth: 1)
                             )
-                    .padding(.bottom, 20)
-                    Text("제목")
-                        .font(.custom("BMJUAOTF", size: 30))
-                    TextField("", text: $title)
-                        .frame(width: geometry.size.width-39, height: 40)
-                        .cornerRadius(10)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color("MainColor"), lineWidth: 1)
-                        )
-                        .font(.custom("BMJUAOTF", size: 20))
-                        .onAppear(perform: UIApplication.shared.hideKeyboard)
-                    Text("설명")
-                        .font(.custom("BMJUAOTf", size: 30))
-                    TextEditor(text: $description)
-                        .cornerRadius(10)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color("MainColor"), lineWidth: 1)
-                        )
-                        .font(.custom("BMJUAOTF", size: 20))
-                        .onAppear(perform: UIApplication.shared.hideKeyboard)
-                    Button(action: {
-                        let nowDate = Date() // 현재의 Date (ex: 2020-08-13 09:14:48 +0000)
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-                        dateFormatter.locale = Locale(identifier: "ko_KR")
-                        let convertDate = dateFormatter.string(from: nowDate)
-                        posts.append(post(categoryName: categoryName, title: title, description: description, image: profileImage == nil ? Image(systemName: "plus.circle") : profileImage!, date: convertDate))
-                        self.presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Text("등록하기")
+                            .font(.custom("BMJUAOTF", size: 20))
+                            .onAppear(perform: UIApplication.shared.hideKeyboard)
+                        Text("설명")
+                            .font(.custom("BMJUAOTf", size: 30))
+                        TextEditor(text: $description)
+                            .frame(height: 250)
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color("MainColor"), lineWidth: 1)
+                            )
+                            .font(.custom("BMJUAOTF", size: 20))
+                            .onAppear(perform: UIApplication.shared.hideKeyboard)
+                        Button(action: {
+                            let nowDate = Date() // 현재의 Date (ex: 2020-08-13 09:14:48 +0000)
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+                            dateFormatter.locale = Locale(identifier: "ko_KR")
+                            let convertDate = dateFormatter.string(from: nowDate)
+                            posts.append(post(categoryName: categoryName, title: title, description: description, image: profileImage == nil ? Image(systemName: "plus.circle") : profileImage!, date: convertDate))
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Text("등록하기")
+                        }
+                        .buttonStyle(customButtonStyle())
                     }
-                    .buttonStyle(customButtonStyle())
+                    .padding(20)
                 }
-                .padding(20)
             }
         }
     }

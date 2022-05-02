@@ -15,16 +15,16 @@ struct CardView: View {
         VStack {
             VStack(alignment: .leading) {
                 VStack {
-                    Text("\(categoryName)")
-                    .foregroundColor(Color("MainColor"))
-                    .font(.custom("BMJUAOTF", size: 27))
-                }
-                VStack {
                     categoryImage
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 250, height: 125)
                         .padding(.horizontal, 35)
+                }
+                VStack {
+                    Text("\(categoryName)")
+                    .foregroundColor(Color("MainColor"))
+                    .font(.custom("BMJUAOTF", size: 27))
                 }
                 VStack {
                     Text("\(categoryDescription)")
