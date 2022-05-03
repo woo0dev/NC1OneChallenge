@@ -16,13 +16,20 @@ struct ProfileView: View {
     @State private var appleLoginCoordinator: AppleAuthCoordinator?
     @Binding var isPresented: Bool
     var body: some View {
-        if isPresented {
+        if Auth.auth().currentUser != nil {
             Text("@")
+            Button(action: {
+                try! Auth.auth().signOut()
+                self.presentationMode.wrappedValue.dismiss()
+            }, label: {
+                Text("로그아웃")
+            })
         } else {
             QuickSignInWithApple()
                     .frame(width: 280, height: 60, alignment: .center)
                     .onTapGesture {
                         appleLogin()
+                        self.presentationMode.wrappedValue.dismiss()
                     }
         }
     }

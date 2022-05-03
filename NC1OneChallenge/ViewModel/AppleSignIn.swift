@@ -106,12 +106,14 @@ extension AppleAuthCoordinator: ASAuthorizationControllerDelegate {
         }
         // User is signed in to Firebase with Apple.
         // ...
+          self.db.collection("userTable").document("\(Auth.auth().currentUser!.uid)").setData([:])
+          var path = self.db.collection("userTable").document(Auth.auth().currentUser!.uid)
+          if appleIDCredential.fullName?.familyName != nil {
+              path.updateData(["name": "\(appleIDCredential.fullName!.familyName!)"+"\(appleIDCredential.fullName!.givenName!)"])
+          }
       }
         if let _ = appleIDCredential.email {
             print("111111 ================= 첫 로그인")
-            db.collection("userTable").document("\(Auth.auth().currentUser!.uid)").setData([:])
-            var path = db.collection("userTable").document(Auth.auth().currentUser!.uid)
-            path.updateData(["name": "\(appleIDCredential.fullName!.familyName!)"+"\(appleIDCredential.fullName!.givenName!)"])
         } else {
             print("222222 ================== 로그인 했었음")
         }
