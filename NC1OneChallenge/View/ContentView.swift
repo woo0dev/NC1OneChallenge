@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
     @Environment(\.calendar) var calendar
@@ -16,6 +17,11 @@ struct ContentView: View {
     @State var posts: [post] = [post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-11"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-11"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-11"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-14"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-11"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-14"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-12"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-15"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-12"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-15"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-15"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-16"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-17"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-18"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-18"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13")]
     @State var dates: [String] = []
     @State private var showModal = false
+    @State var isPresented = false
+    init() {
+        FirebaseApp.configure()
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             NavigationView {
@@ -27,36 +33,6 @@ struct ContentView: View {
                             .padding([.trailing], 35)
                             .padding([.top], 20)
                             .navigationBarTitle("One Challenge", displayMode: .inline)
-                        Button(action: {
-                            dates = posts.map {
-                                return $0.date
-                            }
-                            print(dates)
-                            self.showModal = true
-                        }, label: {
-                            Image(systemName: "calendar")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 30, height: 30)
-                                .padding([.top], 20)
-                                .padding([.trailing], 10)
-                                .foregroundColor(Color("BlackColor"))
-                        })
-                        .sheet(isPresented: self.$showModal) {
-                            CalendarView(interval: self.year) { date in
-                                Text("30")
-                                    .hidden()
-                                    .padding(8)
-                                    .background(Color("\(calendarColor(dates, date: date))"))
-                                    .clipShape(Rectangle())
-                                    .cornerRadius(4)
-                                    .padding(4)
-                                    .overlay(
-                                        Text(String(self.calendar.component(.day, from: date)))
-                                            .foregroundColor(Color.black)
-                                    )
-                            }
-                        }
                     }
                     VStack {
                         NavigationLink(destination: AddCategoryView(categorys: $categorys)) {
@@ -87,6 +63,47 @@ struct ContentView: View {
                         }
                     }
                 }
+                .navigationBarTitle("One Challenge", displayMode: .inline)
+                .navigationBarItems(leading:
+                                        Button(action: {
+                                            dates = posts.map {
+                                                return $0.date
+                                            }
+                                            print(dates)
+                                            self.showModal = true
+                                        }, label: {
+                                            Image(systemName: "calendar")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                                .frame(width: 30, height: 30)
+                                                .padding([.top], 20)
+                                                .padding([.trailing], 10)
+                                                .foregroundColor(Color("BlackColor"))
+                                        })
+                                        .sheet(isPresented: self.$showModal) {
+                                            CalendarView(interval: self.year) { date in
+                                                Text("30")
+                                                    .hidden()
+                                                    .padding(8)
+                                                    .background(Color("\(calendarColor(dates, date: date))"))
+                                                    .clipShape(Rectangle())
+                                                    .cornerRadius(4)
+                                                    .padding(4)
+                                                    .overlay(
+                                                        Text(String(self.calendar.component(.day, from: date)))
+                                                            .foregroundColor(Color.black)
+                                                    )
+                                            }
+                                        },
+                                    trailing:
+                                        NavigationLink(
+                                            destination: ProfileView(isPresented: $isPresented),
+                                            label: {
+                                                Image(systemName: "person.fill")
+                                                    .foregroundColor(.black)
+                                            }
+                                        )
+                )
             }
         }
     }
