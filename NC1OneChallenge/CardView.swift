@@ -33,40 +33,17 @@ struct CardView: View {
                     .font(.custom("BMJUAOTF", size: 16))
                     .offset(x: -23, y: 75)
                     .lineLimit(1)
-    //            VStack(alignment: .leading) {
-    //                VStack {
-    //                    categoryImage
-    //                        .resizable()
-    //                        .aspectRatio(contentMode: .fit)
-    //                        .frame(width: 250, height: 125)
-    //                        .padding(.horizontal, 35)
-    //                        .scaledToFit()
-    //                }
-    //                VStack {
-    //                    Text("\(categoryName)")
-    //                    .foregroundColor(Color("MainColor"))
-    //                    .font(.custom("BMJUAOTF", size: 27))
-    //                }
-    //                VStack {
-    //                    Text("\(categoryDescription)")
-    //                        .foregroundColor(Color("BlackColor"))
-    //                        .font(.custom("BMJUAOTF", size: 16))
-    //                }
-    //                HStack {
-    //                    Spacer()
-    //                }
-    //            }
-    //            .padding()
             }
-            .frame(width: 370, height: 200)
-            .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color("MainColor"), lineWidth: 1)
-                    )
-                    .padding([.top, .horizontal])
+            
         //}
         }
+        .frame(width: 370, height: 200)
+        .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color("MainColor"), lineWidth: 1)
+                )
+                .padding([.top, .horizontal])
     }
 }
 
