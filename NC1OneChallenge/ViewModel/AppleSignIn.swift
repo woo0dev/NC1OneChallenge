@@ -3,10 +3,13 @@ import CryptoKit
 import AuthenticationServices
 import FirebaseAuth
 import Firebase
+import FirebaseFirestore
 
 class AppleAuthCoordinator: NSObject {
     var currentNonce: String?
     let window: UIWindow?
+    
+    let db = Firestore.firestore()
 
     init(window: UIWindow?) {
         self.window = window
@@ -106,13 +109,16 @@ extension AppleAuthCoordinator: ASAuthorizationControllerDelegate {
       }
         if let _ = appleIDCredential.email {
             print("111111 ================= 첫 로그인")
+            db.collection("userTable").document("\(Auth.auth().currentUser!.uid)").setData([:])
+            var path = db.collection("userTable").document(Auth.auth().currentUser!.uid)
+            path.updateData(["name": "\(appleIDCredential.fullName!.familyName!)"+"\(appleIDCredential.fullName!.givenName!)"])
         } else {
             print("222222 ================== 로그인 했었음")
         }
     }
   }
 }
-
+//"name": "\(appleIDCredential.fullName!.familyName)"+"\(appleIDCredential.fullName!.givenName)"
 extension AppleAuthCoordinator: ASAuthorizationControllerPresentationContextProviding {
     public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         window!

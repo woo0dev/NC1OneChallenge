@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Firebase
+import FirebaseFirestoreSwift
+import AuthenticationServices
 
 struct ContentView: View {
     @Environment(\.calendar) var calendar
@@ -18,9 +20,8 @@ struct ContentView: View {
     @State var dates: [String] = []
     @State private var showModal = false
     @State var isPresented = false
-    init() {
-        FirebaseApp.configure()
-    }
+    
+    let db = Firestore.firestore()
     
     var body: some View {
         GeometryReader { geometry in

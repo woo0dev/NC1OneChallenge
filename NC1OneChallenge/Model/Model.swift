@@ -24,3 +24,7 @@ struct post: Hashable {
         hasher.combine(date)
     }
 }
+struct user {
+    var UUID: UUID
+    var name: String
+}
