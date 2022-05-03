@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E231CEBE2821201A0010955C /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231CEBD2821201A0010955C /* CalendarView.swift */; };
+		E231CEC0282170ED0010955C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231CEBF282170ED0010955C /* ViewModel.swift */; };
 		E2A13238281AC81600AE12BC /* NC1OneChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A13237281AC81600AE12BC /* NC1OneChallengeApp.swift */; };
 		E2A1323A281AC81600AE12BC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A13239281AC81600AE12BC /* ContentView.swift */; };
 		E2A1323C281AC81700AE12BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2A1323B281AC81700AE12BC /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E231CEBD2821201A0010955C /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		E231CEBF282170ED0010955C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		E2A13234281AC81600AE12BC /* NC1OneChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NC1OneChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A13237281AC81600AE12BC /* NC1OneChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NC1OneChallengeApp.swift; sourceTree = "<group>"; };
 		E2A13239281AC81600AE12BC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */,
 				E2F6A0BA281AFAB6006F5371 /* AddPostView.swift */,
 				E2F6A0BC281BC86B006F5371 /* ImagePicker.swift */,
+				E231CEBD2821201A0010955C /* CalendarView.swift */,
+				E231CEBF282170ED0010955C /* ViewModel.swift */,
 			);
 			path = NC1OneChallenge;
 			sourceTree = "<group>";
@@ -181,9 +187,11 @@
 				E2A13246281AC92400AE12BC /* AddCategoryView.swift in Sources */,
 				E2F6A0B9281AEE66006F5371 /* PostDetailView.swift in Sources */,
 				E2A1323A281AC81600AE12BC /* ContentView.swift in Sources */,
+				E231CEBE2821201A0010955C /* CalendarView.swift in Sources */,
 				E2A13248281AC99B00AE12BC /* CardView.swift in Sources */,
 				E2F6A0BD281BC86B006F5371 /* ImagePicker.swift in Sources */,
 				E2A13238281AC81600AE12BC /* NC1OneChallengeApp.swift in Sources */,
+				E231CEC0282170ED0010955C /* ViewModel.swift in Sources */,
 				E2A1324C281AD1D700AE12BC /* CategoryDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

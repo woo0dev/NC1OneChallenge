@@ -8,26 +8,55 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.calendar) var calendar
+    private var year: DateInterval {
+        calendar.dateInterval(of: .month, for: Date())!
+    }
     @State var categorys: [category] = [category(categoryName: "1일 1커밋", categoryDescription: "1일 1커밋을 꾸준히 합시다!", categoryImage: Image("image1"))]
-    @State var posts: [post] = []
+    @State var posts: [post] = [post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-11"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-11"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-11"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-14"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-11"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-14"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-12"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-15"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-12"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-15"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-15"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-16"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-17"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-18"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-18"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13")]
+    @State var dates: [String] = []
+    @State private var showModal = false
     var body: some View {
         GeometryReader { geometry in
             NavigationView {
                 ScrollView() {
-                    VStack {
+                    HStack {
                         Text("다양한 습관들을 살펴보세요!")
                             .font(.custom("BMJUAOTF", size: 27))
                             .padding([.leading], 5)
-                            .padding([.trailing], 55)
+                            .padding([.trailing], 35)
                             .padding([.top], 20)
                             .navigationBarTitle("One Challenge", displayMode: .inline)
-//                        Button(action: {
-//                        }) {
-//                            NavigationLink(destination: AddCategoryView(categorys: $categorys)) {
-//                                Text("습관 등록하기")
-//                            }
-//                        }
-//                        .buttonStyle(customButtonStyle())
+                        Button(action: {
+                            dates = posts.map {
+                                return $0.date
+                            }
+                            print(dates)
+                            self.showModal = true
+                        }, label: {
+                            Image(systemName: "calendar")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 30, height: 30)
+                                .padding([.top], 20)
+                                .padding([.trailing], 10)
+                                .foregroundColor(Color("BlackColor"))
+                        })
+                        .sheet(isPresented: self.$showModal) {
+                            CalendarView(interval: self.year) { date in
+                                Text("30")
+                                    .hidden()
+                                    .padding(8)
+                                    .background(Color("\(calendarColor(dates, date: date))"))
+                                    .clipShape(Rectangle())
+                                    .cornerRadius(4)
+                                    .padding(4)
+                                    .overlay(
+                                        Text(String(self.calendar.component(.day, from: date)))
+                                            .foregroundColor(Color.black)
+                                    )
+                            }
+                        }
                     }
                     VStack {
                         NavigationLink(destination: AddCategoryView(categorys: $categorys)) {
