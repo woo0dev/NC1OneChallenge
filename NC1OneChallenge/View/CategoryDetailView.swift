@@ -54,15 +54,14 @@ struct CategoryDetailView: View {
                         }
                     }
                 }
-                Button(action: {
-                }) {
-                    NavigationLink(destination: AddPostView(categoryName: categoryName, posts: $posts)) {
-                        Text("기록하기")
-                    }
-                }
-                .buttonStyle(customButtonStyle())
                 Spacer()
             }
+            .navigationBarItems(trailing:
+                                    NavigationLink(destination: AddPostView(categoryName: categoryName, posts: $posts)) {
+                                        Image(systemName: "plus.circle")
+                                            .foregroundColor(Color("BlackColor"))
+                                    }
+            )
         }
     }
 }

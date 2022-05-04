@@ -76,7 +76,6 @@ struct ContentView: View {
                                             Image(systemName: "calendar")
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fill)
-                                                .frame(width: 30, height: 30)
                                                 .padding([.top], 20)
                                                 .padding([.trailing], 10)
                                                 .foregroundColor(Color("BlackColor"))
@@ -101,7 +100,7 @@ struct ContentView: View {
                                             destination: ProfileView(isPresented: $isPresented),
                                             label: {
                                                 Image(systemName: "person.fill")
-                                                    .foregroundColor(.black)
+                                                    .foregroundColor(Color("BlackColor"))
                                             }
                                         )
                 )

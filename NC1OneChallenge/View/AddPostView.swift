@@ -27,30 +27,33 @@ struct AddPostView: View {
                             .padding(10)
                     }
                     VStack(alignment: .leading) {
-                        Button(action: {
-                            imagePickerPresented.toggle()
-                        }, label: {
-                            VStack {
-                                let image = profileImage == nil ? Image(systemName: "plus.circle") : profileImage ?? Image(systemName: "plus.circle")
-                                image
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 64, height: 64)
-                                    .clipShape(Circle())
-                                Text("사진 선택하기")
-                                    .foregroundColor(Color("BlackColor"))
-                            }
-                            .padding(20)
-                        })
-                        .sheet(isPresented: $imagePickerPresented,
-                               onDismiss: loadImage,
-                               content: { ImagePicker(image: $selectedImage) })
-                        .cornerRadius(10)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color("MainColor"), lineWidth: 1)
-                                )
-                        .padding(.bottom, 20)
+                        VStack(alignment: .center) {
+                            Button(action: {
+                                imagePickerPresented.toggle()
+                            }, label: {
+                                VStack {
+                                    let image = profileImage == nil ? Image(systemName: "plus.circle") : profileImage ?? Image(systemName: "plus.circle")
+                                    image
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 64, height: 64)
+                                        .clipShape(Circle())
+                                    Text("사진 선택하기")
+                                        .foregroundColor(Color("BlackColor"))
+                                }
+                                .padding(20)
+                            })
+                            .sheet(isPresented: $imagePickerPresented,
+                                   onDismiss: loadImage,
+                                   content: { ImagePicker(image: $selectedImage) })
+                            .cornerRadius(10)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(Color("MainColor"), lineWidth: 1)
+                                    )
+                            .padding(.bottom, 20)
+                        }
+                        .frame(width: geometry.size.width-20, height: 100, alignment: .center)
                         Text("제목")
                             .font(.custom("BMJUAOTF", size: 30))
                         TextField("", text: $title)
