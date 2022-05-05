@@ -10,12 +10,12 @@ import SwiftUI
 struct CardView: View {
     @State var categoryName: String
     @State var categoryDescription: String
-    @State var categoryImage: Image
+    @State var categoryImage: UIImage
     var body: some View {
         //GeometryReader { geometry in
         VStack {
             ZStack {
-                categoryImage
+                Image(uiImage: categoryImage)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 370, height: 200)

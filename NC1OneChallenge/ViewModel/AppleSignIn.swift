@@ -106,10 +106,9 @@ extension AppleAuthCoordinator: ASAuthorizationControllerDelegate {
         }
         // User is signed in to Firebase with Apple.
         // ...
-          self.db.collection("userTable").document("\(Auth.auth().currentUser!.uid)").setData([:])
-          var path = self.db.collection("userTable").document(Auth.auth().currentUser!.uid)
-          if appleIDCredential.fullName?.familyName != nil {
-              path.updateData(["name": "\(appleIDCredential.fullName!.familyName!)"+"\(appleIDCredential.fullName!.givenName!)"])
+          if appleIDCredential.fullName?.familyName != nil && Auth.auth().currentUser?.uid != nil {
+              self.db.collection("OneChallenge").document("users").setData(["\(Auth.auth().currentUser!.uid)": ["uuid": Auth.auth().currentUser!.uid, "name": "\(appleIDCredential.fullName!.familyName!)"+"\(appleIDCredential.fullName!.givenName!)"]])
+//              path.updateData(["name": "\(appleIDCredential.fullName!.familyName!)"+"\(appleIDCredential.fullName!.givenName!)"])
           }
       }
         if let _ = appleIDCredential.email {
@@ -120,6 +119,7 @@ extension AppleAuthCoordinator: ASAuthorizationControllerDelegate {
     }
   }
 }
+//\(Auth.auth().currentUser!.uid)
 //"name": "\(appleIDCredential.fullName!.familyName)"+"\(appleIDCredential.fullName!.givenName)"
 extension AppleAuthCoordinator: ASAuthorizationControllerPresentationContextProviding {
     public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {

@@ -14,7 +14,6 @@ struct ProfileView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.window) var window: UIWindow?
     @State private var appleLoginCoordinator: AppleAuthCoordinator?
-    @Binding var isPresented: Bool
     var body: some View {
         if Auth.auth().currentUser != nil {
             Text("@")

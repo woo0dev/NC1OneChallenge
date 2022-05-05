@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
 
 struct AddPostView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -16,6 +18,9 @@ struct AddPostView: View {
     @State private var imagePickerPresented = false
     @State private var selectedImage: UIImage?
     @State private var profileImage: Image?
+    
+    let db = Firestore.firestore()
+    
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
@@ -32,7 +37,7 @@ struct AddPostView: View {
                                 imagePickerPresented.toggle()
                             }, label: {
                                 VStack {
-                                    let image = profileImage == nil ? Image(systemName: "plus.circle") : profileImage ?? Image(systemName: "plus.circle")
+                                    let image = profileImage ?? Image(systemName: "plus.circle")
                                     image
                                         .resizable()
                                         .scaledToFill()
@@ -68,7 +73,7 @@ struct AddPostView: View {
                         Text("설명")
                             .font(.custom("BMJUAOTf", size: 30))
                         TextEditor(text: $description)
-                            .frame(height: 250)
+                            .frame(width: geometry.size.width-39, height: 250, alignment: .leading)
                             .cornerRadius(10)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
@@ -78,12 +83,17 @@ struct AddPostView: View {
                             .onAppear(perform: UIApplication.shared.hideKeyboard)
                         Button(action: {
                             let nowDate = Date()
-                            posts.append(post(categoryName: categoryName, title: title, description: description, image: profileImage == nil ? Image(systemName: "plus.circle") : profileImage!, date: dateFormat(nowDate)))
+                            if Auth.auth().currentUser?.uid != nil {
+//                                db.collection("OneChallenge").document("posts").setData(["\(nowDate)": ["user": Auth.auth().currentUser!.uid, "categoryName": categoryName, "title": title, "description": description, "image": selectedImage]])
+                                posts.append(post(user: Auth.auth().currentUser!.uid, categoryName: categoryName, title: title, description: description, image: selectedImage == nil ? UIImage(systemName: "plus.circle")! : selectedImage!, date: dateFormat(nowDate)))
+                                uploadPost(post: post(user: Auth.auth().currentUser!.uid, categoryName: categoryName, title: title, description: description, image: selectedImage == nil ? UIImage(systemName: "plus.circle")! : selectedImage!, date: dateFormat(nowDate)))
+                            }
                             self.presentationMode.wrappedValue.dismiss()
                         }) {
                             Text("등록하기")
                         }
                         .buttonStyle(customButtonStyle())
+                        .padding(.trailing, 20)
                     }
                     .padding(20)
                 }

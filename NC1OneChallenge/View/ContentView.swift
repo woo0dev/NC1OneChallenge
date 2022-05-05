@@ -15,11 +15,10 @@ struct ContentView: View {
     private var year: DateInterval {
         calendar.dateInterval(of: .month, for: Date())!
     }
-    @State var categorys: [category] = [category(categoryName: "1일 1커밋", categoryDescription: "1일 1커밋을 꾸준히 합시다!", categoryImage: Image("image1"))]
-    @State var posts: [post] = [post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-11"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-11"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-10"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-11"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-14"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-11"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-14"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-12"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-15"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-12"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-15"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-15"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-16"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-17"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-18"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-18"),post(categoryName: "", title: "", description: "", image: Image("image1"), date: "2022-05-13")]
+    @State var categorys: [category] = [category(categoryName: "1일 1커밋", categoryDescription: "1일 1커밋을 꾸준히 합시다!", categoryImage: UIImage(systemName: "plus.circle")!)]
+    @State var posts: [post] = []
     @State var dates: [String] = []
     @State private var showModal = false
-    @State var isPresented = false
     
     let db = Firestore.firestore()
     
@@ -31,7 +30,7 @@ struct ContentView: View {
                         Text("다양한 습관들을 살펴보세요!")
                             .font(.custom("BMJUAOTF", size: 27))
                             .padding([.leading], 5)
-                            .padding([.trailing], 35)
+                            .padding([.trailing], 55)
                             .padding([.top], 20)
                             .navigationBarTitle("One Challenge", displayMode: .inline)
                     }
@@ -97,7 +96,7 @@ struct ContentView: View {
                                         },
                                     trailing:
                                         NavigationLink(
-                                            destination: ProfileView(isPresented: $isPresented),
+                                            destination: ProfileView(),
                                             label: {
                                                 Image(systemName: "person.fill")
                                                     .foregroundColor(Color("BlackColor"))
