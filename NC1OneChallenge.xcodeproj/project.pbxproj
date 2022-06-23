@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E231CEBE2821201A0010955C /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231CEBD2821201A0010955C /* CalendarView.swift */; };
-		E231CEC0282170ED0010955C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231CEBF282170ED0010955C /* ViewModel.swift */; };
+		E231CEC0282170ED0010955C /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231CEBF282170ED0010955C /* DateFormat.swift */; };
 		E26F5AC728217DD600EA0916 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E26F5AC628217DD600EA0916 /* GoogleService-Info.plist */; };
 		E26F5ACC28217EDE00EA0916 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E26F5ACB28217EDE00EA0916 /* FirebaseAuth */; };
 		E26F5ACE28217EDE00EA0916 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = E26F5ACD28217EDE00EA0916 /* FirebaseAuthCombine-Community */; };
@@ -32,6 +32,8 @@
 		E2A1324A281ACA9100AE12BC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A13249281ACA9100AE12BC /* Model.swift */; };
 		E2A1324C281AD1D700AE12BC /* CategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1324B281AD1D700AE12BC /* CategoryDetailView.swift */; };
 		E2A1324F281AD65500AE12BC /* BMJUA_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = E2A1324E281AD65500AE12BC /* BMJUA_otf.otf */; };
+		E2C8D50E28644D2700273DBE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D50D28644D2700273DBE /* ColorExtension.swift */; };
+		E2C8D51028644D4000273DBE /* CategoryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D50F28644D4000273DBE /* CategoryVM.swift */; };
 		E2F6A0B5281ADD80006F5371 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */; };
 		E2F6A0B9281AEE66006F5371 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */; };
 		E2F6A0BB281AFAB6006F5371 /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0BA281AFAB6006F5371 /* AddPostView.swift */; };
@@ -40,7 +42,7 @@
 
 /* Begin PBXFileReference section */
 		E231CEBD2821201A0010955C /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		E231CEBF282170ED0010955C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		E231CEBF282170ED0010955C /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		E26F5AC628217DD600EA0916 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E26F5AC828217DFD00EA0916 /* NC1OneChallenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NC1OneChallenge.entitlements; sourceTree = "<group>"; };
 		E26F5AE1282180A400EA0916 /* AppleSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignIn.swift; sourceTree = "<group>"; };
@@ -56,6 +58,8 @@
 		E2A1324B281AD1D700AE12BC /* CategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailView.swift; sourceTree = "<group>"; };
 		E2A1324E281AD65500AE12BC /* BMJUA_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMJUA_otf.otf; sourceTree = "<group>"; };
 		E2A13250281AD67400AE12BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E2C8D50D28644D2700273DBE /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		E2C8D50F28644D4000273DBE /* CategoryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVM.swift; sourceTree = "<group>"; };
 		E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		E2F6A0BA281AFAB6006F5371 /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
@@ -87,16 +91,11 @@
 		E231CEC12821780F0010955C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E2A13247281AC99B00AE12BC /* CardView.swift */,
-				E2A13245281AC92400AE12BC /* AddCategoryView.swift */,
-				E2A1324B281AD1D700AE12BC /* CategoryDetailView.swift */,
+				E2C8D50A28644B2500273DBE /* Category */,
+				E2C8D50928644B1F00273DBE /* Main */,
 				E2A13237281AC81600AE12BC /* NC1OneChallengeApp.swift */,
-				E2A13239281AC81600AE12BC /* ContentView.swift */,
-				E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */,
 				E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */,
 				E2F6A0BA281AFAB6006F5371 /* AddPostView.swift */,
-				E231CEBD2821201A0010955C /* CalendarView.swift */,
-				E26F5AE32821837D00EA0916 /* ProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -104,9 +103,10 @@
 		E231CEC2282178150010955C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				E231CEBF282170ED0010955C /* ViewModel.swift */,
 				E26F5AE1282180A400EA0916 /* AppleSignIn.swift */,
 				E2F6A0BC281BC86B006F5371 /* ImagePicker.swift */,
+				E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */,
+				E2C8D50F28644D4000273DBE /* CategoryVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -138,6 +138,7 @@
 		E2A13236281AC81600AE12BC /* NC1OneChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				E2C8D50C28644CF600273DBE /* Extension */,
 				E26F5AC828217DFD00EA0916 /* NC1OneChallenge.entitlements */,
 				E26F5AC628217DD600EA0916 /* GoogleService-Info.plist */,
 				E231CEC32821781F0010955C /* Model */,
@@ -165,6 +166,35 @@
 				E2A1324E281AD65500AE12BC /* BMJUA_otf.otf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		E2C8D50928644B1F00273DBE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E2A13247281AC99B00AE12BC /* CardView.swift */,
+				E2A13239281AC81600AE12BC /* ContentView.swift */,
+				E26F5AE32821837D00EA0916 /* ProfileView.swift */,
+				E231CEBD2821201A0010955C /* CalendarView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E2C8D50A28644B2500273DBE /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				E2A13245281AC92400AE12BC /* AddCategoryView.swift */,
+				E2A1324B281AD1D700AE12BC /* CategoryDetailView.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		E2C8D50C28644CF600273DBE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E231CEBF282170ED0010955C /* DateFormat.swift */,
+				E2C8D50D28644D2700273DBE /* ColorExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,9 +294,11 @@
 				E2A1323A281AC81600AE12BC /* ContentView.swift in Sources */,
 				E231CEBE2821201A0010955C /* CalendarView.swift in Sources */,
 				E2A13248281AC99B00AE12BC /* CardView.swift in Sources */,
+				E2C8D50E28644D2700273DBE /* ColorExtension.swift in Sources */,
 				E2F6A0BD281BC86B006F5371 /* ImagePicker.swift in Sources */,
 				E2A13238281AC81600AE12BC /* NC1OneChallengeApp.swift in Sources */,
-				E231CEC0282170ED0010955C /* ViewModel.swift in Sources */,
+				E2C8D51028644D4000273DBE /* CategoryVM.swift in Sources */,
+				E231CEC0282170ED0010955C /* DateFormat.swift in Sources */,
 				E26F5AE42821837D00EA0916 /* ProfileView.swift in Sources */,
 				E2A1324C281AD1D700AE12BC /* CategoryDetailView.swift in Sources */,
 			);

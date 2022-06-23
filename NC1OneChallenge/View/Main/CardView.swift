@@ -8,26 +8,24 @@
 import SwiftUI
 
 struct CardView: View {
-    @State var categoryName: String
-    @State var categoryDescription: String
-    @State var categoryImage: UIImage
+    @State var category: category
     var body: some View {
         //GeometryReader { geometry in
         VStack {
             ZStack {
-                Image(uiImage: categoryImage)
+                category.categoryImage
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 370, height: 200)
                     .padding(.horizontal, 35)
                     .scaledToFit()
-                Text("\(categoryName)")
+                Text("\(category.categoryName)")
                     .frame(maxWidth: 300, alignment: .leading)
                     .foregroundColor(Color.white)
                     .font(.custom("BMJUAOTF", size: 27))
                     .offset(x: -23, y: 45)
                     .lineLimit(1)
-                Text("\(categoryDescription)")
+                Text("\(category.categoryDescription)")
                     .frame(maxWidth: 300, alignment: .leading)
                     .foregroundColor(Color.white)
                     .font(.custom("BMJUAOTF", size: 16))

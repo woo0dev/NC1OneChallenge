@@ -12,7 +12,7 @@ import FirebaseAuth
 struct AddPostView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var categoryName: String
-    @Binding var posts: [post]
+    @Binding var posts: [register]
     @State var title: String = ""
     @State var description: String = ""
     @State private var imagePickerPresented = false
@@ -37,7 +37,7 @@ struct AddPostView: View {
                                 imagePickerPresented.toggle()
                             }, label: {
                                 VStack {
-                                    let image = profileImage ?? Image(systemName: "plus.circle")
+                                    let image = profileImage == nil ? Image(systemName: "plus.circle") : profileImage ?? Image(systemName: "plus.circle")
                                     image
                                         .resizable()
                                         .scaledToFill()
@@ -85,8 +85,9 @@ struct AddPostView: View {
                             let nowDate = Date()
                             if Auth.auth().currentUser?.uid != nil {
 //                                db.collection("OneChallenge").document("posts").setData(["\(nowDate)": ["user": Auth.auth().currentUser!.uid, "categoryName": categoryName, "title": title, "description": description, "image": selectedImage]])
-                                posts.append(post(user: Auth.auth().currentUser!.uid, categoryName: categoryName, title: title, description: description, image: selectedImage == nil ? UIImage(systemName: "plus.circle")! : selectedImage!, date: dateFormat(nowDate)))
-                                uploadPost(post: post(user: Auth.auth().currentUser!.uid, categoryName: categoryName, title: title, description: description, image: selectedImage == nil ? UIImage(systemName: "plus.circle")! : selectedImage!, date: dateFormat(nowDate)))
+                                posts.append(register(user: Auth.auth().currentUser!.uid, categoryName: categoryName, title: title, description: description, image: profileImage == nil ? Image(systemName: "plus.circle") : profileImage!, date: dateFormat(nowDate)))
+//                                posts.append(post(user: Auth.auth().currentUser!.uid, categoryName: categoryName, title: title, description: description, image: selectedImage == nil ? UIImage(systemName: "plus.circle")! : selectedImage!, date: dateFormat(nowDate)))
+//                                uploadPost(post: post(user: Auth.auth().currentUser!.uid, categoryName: categoryName, title: title, description: description, image: selectedImage == nil ? UIImage(systemName: "plus.circle")! : selectedImage!, date: dateFormat(nowDate)))
                             }
                             self.presentationMode.wrappedValue.dismiss()
                         }) {

@@ -10,11 +10,12 @@ import FirebaseAuth
 
 struct PostDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @Binding var posts: [post]
+    @Binding var posts: [register]
     @State var categoryName: String
     @State var title: String
     @State var description: String
-    @State var postImage: UIImage
+    @State var postImage: Image
+    //@State var postImage: UIImage
     @State var date: String
     var body: some View {
         GeometryReader { geometry in
@@ -28,7 +29,8 @@ struct PostDetailView: View {
                         .padding([.leading], 10)
                 }
                 VStack {
-                    Image(uiImage: postImage)
+                    //Image(uiImage: postImage)
+                    postImage
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 250, height: 125)
@@ -47,7 +49,7 @@ struct PostDetailView: View {
                 }
                 VStack {
                     Button(action: {
-                        if let index = posts.firstIndex(of: post(user: Auth.auth().currentUser!.uid, categoryName: categoryName, title: title, description: description, image: postImage, date: date)) {
+                        if let index = posts.firstIndex(of: register(user: Auth.auth().currentUser!.uid, categoryName: categoryName, title: title, description: description, image: postImage, date: date)) {
                             posts.remove(at: index)
                         }
                         self.presentationMode.wrappedValue.dismiss()

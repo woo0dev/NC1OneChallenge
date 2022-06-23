@@ -15,12 +15,18 @@ struct ContentView: View {
     private var year: DateInterval {
         calendar.dateInterval(of: .month, for: Date())!
     }
-    @State var categorys: [category] = [category(categoryName: "1일 1커밋", categoryDescription: "1일 1커밋을 꾸준히 합시다!", categoryImage: UIImage(systemName: "plus.circle")!)]
-    @State var posts: [post] = []
+    @State var categorys: [category] = [category(categoryName: "1일 1커밋", categoryDescription: "1일 1커밋을 꾸준히 합시다!", categoryImage: Image("image1"))]
+    @State var posts: [register] = []
     @State var dates: [String] = []
     @State private var showModal = false
     
     let db = Firestore.firestore()
+    
+    init() {
+        dates = posts.map {
+            return $0.date
+        }
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -58,7 +64,7 @@ struct ContentView: View {
                     VStack {
                         ForEach(categorys, id: \.self) { category in
                             NavigationLink( destination: CategoryDetailView(categoryName: category.categoryName, posts: $posts)) {
-                                CardView(categoryName: category.categoryName, categoryDescription: category.categoryDescription, categoryImage: category.categoryImage)
+                                CardView(category: category)
                             }
                         }
                     }
@@ -75,10 +81,12 @@ struct ContentView: View {
                                             Image(systemName: "calendar")
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fill)
+                                                .frame(width: 30, height: 30)
                                                 .padding([.top], 20)
                                                 .padding([.trailing], 10)
                                                 .foregroundColor(Color("BlackColor"))
                                         })
+                                        .padding(.bottom, 5)
                                         .sheet(isPresented: self.$showModal) {
                                             CalendarView(interval: self.year) { date in
                                                 Text("30")
@@ -99,7 +107,7 @@ struct ContentView: View {
                                             destination: ProfileView(),
                                             label: {
                                                 Image(systemName: "person.fill")
-                                                    .foregroundColor(Color("BlackColor"))
+                                                    .foregroundColor(.black)
                                             }
                                         )
                 )

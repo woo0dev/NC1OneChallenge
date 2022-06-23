@@ -1,20 +1,34 @@
 import SwiftUI
 struct category: Hashable {
+    var categoryUid = UUID().uuidString
+    var adminName: String
+    var participants: [String]
     var categoryName: String
     var categoryDescription: String
-    var categoryImage: UIImage
+    var categoryImage: String
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(categoryName)
         hasher.combine(categoryDescription)
     }
+    
+    var dictionary: [String: Any] {
+        return [
+            "categoryUid": categoryUid,
+            "adminName": adminName,
+            "participants": participants,
+            "categoryName": categoryName,
+            "categoryDescription": categoryDescription,
+            "categoryImage": categoryImage,
+        ]
+    }
 }
-struct post: Hashable {
-    var user: String
+struct register: Hashable {
+    var userName: String
     var categoryName: String
     var title: String
     var description: String
-    var image: UIImage
+    var image: String
     var date: String
     
     
@@ -25,18 +39,26 @@ struct post: Hashable {
         hasher.combine(date)
     }
     
-    var dictionary: [String: Any] {
-            return [
-                "user": user,
-                "categoryName": categoryName,
-                "title": title,
-                "description": description,
-                "date": date,
-                "image": image,
-            ]
-        }
+    var dictionary: [String: String] {
+        return [
+            "user": userName,
+            "categoryName": categoryName,
+            "title": title,
+            "description": description,
+            "date": date,
+            "image": image,
+        ]
+    }
 }
+
 struct user {
     var UUID: String
     var name: String
+    
+    var dictionary: [String: String] {
+        return [
+            "UUID": UUID,
+            "name": name,
+        ]
+    }
 }

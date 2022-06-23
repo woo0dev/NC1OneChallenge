@@ -58,9 +58,9 @@ struct CategoryDetailView: View {
             }
             .navigationBarItems(trailing:
                                     NavigationLink(destination: AddPostView(categoryName: categoryName, posts: $posts)) {
-                                        Image(systemName: "plus.circle")
-                                            .foregroundColor(Color("BlackColor"))
-                                    }
+                Image(systemName: "plus.circle")
+                    .foregroundColor(Color("BlackColor"))
+            }
             )
         }
     }

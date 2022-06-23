@@ -67,7 +67,7 @@ struct AddCategoryView: View {
                     .font(.custom("BMJUAOTF", size: 30))
                     .onAppear(perform: UIApplication.shared.hideKeyboard)
                 Button(action: {
-                    categorys.append(category(categoryName: categoryName, categoryDescription: categoryDescription, categoryImage: selectedImage == nil ? UIImage(systemName: "plus.circle")! : selectedImage!))
+                    categorys.append(category(categoryName: categoryName, categoryDescription: categoryDescription, categoryImage: profileImage == nil ? Image(systemName: "plus.circle") : profileImage!))
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("등록하기")
