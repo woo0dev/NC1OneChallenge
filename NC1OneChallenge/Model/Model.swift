@@ -51,7 +51,7 @@ struct Record: Hashable {
     }
 }
 
-struct user {
+struct User {
     var Uid: String
     var name: String
     
