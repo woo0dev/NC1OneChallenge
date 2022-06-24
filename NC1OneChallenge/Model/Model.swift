@@ -52,12 +52,12 @@ struct register: Hashable {
 }
 
 struct user {
-    var UUID: String
+    var Uid: String
     var name: String
     
     var dictionary: [String: String] {
         return [
-            "UUID": UUID,
+            "Uid": Uid,
             "name": name,
         ]
     }

@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
+
 import Firebase
 import FirebaseFirestore
-import FirebaseStorage
 
 class categoryVM: ObservableObject {
     let db = Firestore.firestore()
@@ -16,19 +16,19 @@ class categoryVM: ObservableObject {
     var myCategories: [category] = [category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")]
     
     func addCategory(category: category) {
-        db.collection("category").document(category.categoryUid).updateData(category.dictionary)
+        db.collection("Category").document(category.categoryUid).updateData(category.dictionary)
     }
     
     func deleteCategory(category: category) {
-        db.collection("category").document(category.categoryUid).delete()
+        db.collection("Category").document(category.categoryUid).delete()
     }
     
     func editCategory(category: category) {
-        db.collection("category").document(category.categoryUid).updateData(category.dictionary)
+        db.collection("Category").document(category.categoryUid).updateData(category.dictionary)
     }
     
     func fetchAllCategories() {
-        db.collection("category").getDocuments() { (querySnapShot, error) in
+        db.collection("Category").getDocuments() { (querySnapShot, error) in
             guard let documents = querySnapShot?.documents else {
                 print("No Documents")
                 return
@@ -48,7 +48,7 @@ class categoryVM: ObservableObject {
     }
     
     func fetchMyCategories(uid: String) {
-        db.collection("category").getDocuments() { (querySnapShot, error) in
+        db.collection("Category").getDocuments() { (querySnapShot, error) in
             guard let documents = querySnapShot?.documents else {
                 print("No Documents")
                 return
