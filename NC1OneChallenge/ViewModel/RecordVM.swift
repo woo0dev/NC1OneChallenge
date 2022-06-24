@@ -12,7 +12,11 @@ import FirebaseFirestore
 
 class RecordVM: ObservableObject {
     let db = Firestore.firestore()
-    var myRecord = Record(userName: <#T##String#>, categoryName: <#T##String#>, title: <#T##String#>, description: <#T##String#>, date: <#T##String#>)
+    var myRecord = Record(userName: "", categoryName: "", title: "", description: "", date: "")
+    
+    func addRecord(record: Record) {
+        db.collection("Record").document(record)
+    }
     
     func addCategory(category: Category) {
         db.collection("Category").document(category.categoryUid).updateData(category.dictionary)

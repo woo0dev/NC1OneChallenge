@@ -5,7 +5,6 @@ struct Category: Hashable {
     var participants: [String]
     var categoryName: String
     var categoryDescription: String
-//    var categoryImage: String
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(categoryName)
@@ -19,34 +18,30 @@ struct Category: Hashable {
             "participants": participants,
             "categoryName": categoryName,
             "categoryDescription": categoryDescription,
-//            "categoryImage": categoryImage,
         ]
     }
 }
 struct Record: Hashable {
+    var recordUid: String
     var userName: String
     var categoryName: String
-    var title: String
-    var description: String
-//    var image: String
+    var text: String
     var date: String
     
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(categoryName)
-        hasher.combine(title)
-        hasher.combine(description)
+        hasher.combine(text)
         hasher.combine(date)
     }
     
     var dictionary: [String: String] {
         return [
-            "user": userName,
+            "recordUid": recordUid,
+            "userName": userName,
             "categoryName": categoryName,
-            "title": title,
-            "description": description,
+            "text": text,
             "date": date,
-//            "image": image,
         ]
     }
 }
