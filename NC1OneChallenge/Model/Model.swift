@@ -5,7 +5,7 @@ struct category: Hashable {
     var participants: [String]
     var categoryName: String
     var categoryDescription: String
-    var categoryImage: String
+//    var categoryImage: String
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(categoryName)
@@ -19,7 +19,7 @@ struct category: Hashable {
             "participants": participants,
             "categoryName": categoryName,
             "categoryDescription": categoryDescription,
-            "categoryImage": categoryImage,
+//            "categoryImage": categoryImage,
         ]
     }
 }
