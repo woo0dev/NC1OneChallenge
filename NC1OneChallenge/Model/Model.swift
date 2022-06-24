@@ -23,12 +23,12 @@ struct category: Hashable {
         ]
     }
 }
-struct register: Hashable {
+struct Record: Hashable {
     var userName: String
     var categoryName: String
     var title: String
     var description: String
-    var image: String
+//    var image: String
     var date: String
     
     
@@ -46,7 +46,7 @@ struct register: Hashable {
             "title": title,
             "description": description,
             "date": date,
-            "image": image,
+//            "image": image,
         ]
     }
 }

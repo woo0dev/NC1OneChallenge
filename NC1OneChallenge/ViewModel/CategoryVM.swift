@@ -10,7 +10,7 @@ import SwiftUI
 import Firebase
 import FirebaseFirestore
 
-class categoryVM: ObservableObject {
+class CategoryVM: ObservableObject {
     let db = Firestore.firestore()
     var allCategories: [category] = [category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")]
     var myCategories: [category] = [category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")]
