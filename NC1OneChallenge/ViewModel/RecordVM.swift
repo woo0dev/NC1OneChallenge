@@ -12,17 +12,17 @@ import FirebaseFirestore
 
 class RecordVM: ObservableObject {
     let db = Firestore.firestore()
+    var myRecord = Record(userName: <#T##String#>, categoryName: <#T##String#>, title: <#T##String#>, description: <#T##String#>, date: <#T##String#>)
     
-    
-    func addCategory(category: category) {
+    func addCategory(category: Category) {
         db.collection("Category").document(category.categoryUid).updateData(category.dictionary)
     }
     
-    func deleteCategory(category: category) {
+    func deleteCategory(category: Category) {
         db.collection("Category").document(category.categoryUid).delete()
     }
     
-    func editCategory(category: category) {
+    func editCategory(category: Category) {
         db.collection("Category").document(category.categoryUid).updateData(category.dictionary)
     }
     
@@ -33,7 +33,7 @@ class RecordVM: ObservableObject {
                 return
             }
             
-            self.allCategories = documents.map({ (queryDocumentSnapshot) -> category in
+            self.allCategories = documents.map({ (queryDocumentSnapshot) -> Category in
                 let data = queryDocumentSnapshot.data()
                 let categoryUid = data["categoryUid"] as? String ?? ""
                 let adminName = data["adminName"] as? String ?? ""
@@ -53,7 +53,7 @@ class RecordVM: ObservableObject {
                 return
             }
             
-            let results = documents.map({ (queryDocumentSnapshot) -> category in
+            let results = documents.map({ (queryDocumentSnapshot) -> Category in
                 let data = queryDocumentSnapshot.data()
                 if (data["participants"] as? [String] ?? [""]).contains(uid) {
                     let categoryUid = data["categoryUid"] as? String ?? ""
@@ -62,9 +62,9 @@ class RecordVM: ObservableObject {
                     let categoryName = data["categoryName"] as? String ?? ""
                     let categoryDescription = data["categoryDescription"] as? String ?? ""
 //                    let categoryImage = data["categoryImage"] as? String ?? ""
-                    return category(categoryUid: categoryUid, adminName: adminName, participants: participants, categoryName: categoryName, categoryDescription: categoryDescription)
+                    return Category(categoryUid: categoryUid, adminName: adminName, participants: participants, categoryName: categoryName, categoryDescription: categoryDescription)
                 } else {
-                    return category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")
+                    return Category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")
                 }
             })
             

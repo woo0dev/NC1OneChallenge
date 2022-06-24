@@ -15,7 +15,7 @@ struct ContentView: View {
     private var year: DateInterval {
         calendar.dateInterval(of: .month, for: Date())!
     }
-    @State var categorys: [category] = [category(categoryName: "1일 1커밋", categoryDescription: "1일 1커밋을 꾸준히 합시다!", categoryImage: Image("image1"))]
+    @State var categorys: [Category] = [Category(categoryName: "1일 1커밋", categoryDescription: "1일 1커밋을 꾸준히 합시다!", categoryImage: Image("image1"))]
     @State var posts: [register] = []
     @State var dates: [String] = []
     @State private var showModal = false

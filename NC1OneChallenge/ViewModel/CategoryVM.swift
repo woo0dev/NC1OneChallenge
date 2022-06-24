@@ -12,18 +12,18 @@ import FirebaseFirestore
 
 class CategoryVM: ObservableObject {
     let db = Firestore.firestore()
-    var allCategories: [category] = [category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")]
-    var myCategories: [category] = [category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")]
+    var allCategories: [Category] = [Category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")]
+    var myCategories: [Category] = [Category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")]
     
-    func addCategory(category: category) {
+    func addCategory(category: Category) {
         db.collection("Category").document(category.categoryUid).updateData(category.dictionary)
     }
     
-    func deleteCategory(category: category) {
+    func deleteCategory(category: Category) {
         db.collection("Category").document(category.categoryUid).delete()
     }
     
-    func editCategory(category: category) {
+    func editCategory(category: Category) {
         db.collection("Category").document(category.categoryUid).updateData(category.dictionary)
     }
     
@@ -34,7 +34,7 @@ class CategoryVM: ObservableObject {
                 return
             }
             
-            self.allCategories = documents.map({ (queryDocumentSnapshot) -> category in
+            self.allCategories = documents.map({ (queryDocumentSnapshot) -> Category in
                 let data = queryDocumentSnapshot.data()
                 let categoryUid = data["categoryUid"] as? String ?? ""
                 let adminName = data["adminName"] as? String ?? ""
@@ -42,7 +42,7 @@ class CategoryVM: ObservableObject {
                 let categoryName = data["categoryName"] as? String ?? ""
                 let categoryDescription = data["categoryDescription"] as? String ?? ""
 //                let categoryImage = data["categoryImage"] as? String ?? ""
-                return category(categoryUid: categoryUid, adminName: adminName, participants: participants, categoryName: categoryName, categoryDescription: categoryDescription)
+                return Category(categoryUid: categoryUid, adminName: adminName, participants: participants, categoryName: categoryName, categoryDescription: categoryDescription)
             })
         }
     }
@@ -54,7 +54,7 @@ class CategoryVM: ObservableObject {
                 return
             }
             
-            let results = documents.map({ (queryDocumentSnapshot) -> category in
+            let results = documents.map({ (queryDocumentSnapshot) -> Category in
                 let data = queryDocumentSnapshot.data()
                 if (data["participants"] as? [String] ?? [""]).contains(uid) {
                     let categoryUid = data["categoryUid"] as? String ?? ""
@@ -63,9 +63,9 @@ class CategoryVM: ObservableObject {
                     let categoryName = data["categoryName"] as? String ?? ""
                     let categoryDescription = data["categoryDescription"] as? String ?? ""
 //                    let categoryImage = data["categoryImage"] as? String ?? ""
-                    return category(categoryUid: categoryUid, adminName: adminName, participants: participants, categoryName: categoryName, categoryDescription: categoryDescription)
+                    return Category(categoryUid: categoryUid, adminName: adminName, participants: participants, categoryName: categoryName, categoryDescription: categoryDescription)
                 } else {
-                    return category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")
+                    return Category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")
                 }
             })
             

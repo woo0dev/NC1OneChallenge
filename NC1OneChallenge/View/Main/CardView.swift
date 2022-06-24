@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardView: View {
-    @State var category: category
+    @State var category: Category
     var body: some View {
         //GeometryReader { geometry in
         VStack {

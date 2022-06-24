@@ -1,5 +1,5 @@
 import SwiftUI
-struct category: Hashable {
+struct Category: Hashable {
     var categoryUid = UUID().uuidString
     var adminName: String
     var participants: [String]
