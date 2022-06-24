@@ -12,69 +12,65 @@ import FirebaseFirestore
 
 class RecordVM: ObservableObject {
     let db = Firestore.firestore()
-    var myRecord = Record(userName: "", categoryName: "", title: "", description: "", date: "")
+    var allRecord = [Record(recordUid: "", userName: "", categoryName: "", text: "", date: "")]
+    var myRecord = [Record(recordUid: "", userName: "", categoryName: "", text: "", date: "")]
     
     func addRecord(record: Record) {
-        db.collection("Record").document(record)
+        db.collection("Record").document(record.recordUid).updateData(record.dictionary)
     }
     
-    func addCategory(category: Category) {
-        db.collection("Category").document(category.categoryUid).updateData(category.dictionary)
+    func deleteRecord(record: Record) {
+        db.collection("Record").document(record.recordUid).updateData(record.dictionary)
     }
     
-    func deleteCategory(category: Category) {
-        db.collection("Category").document(category.categoryUid).delete()
-    }
-    
-    func editCategory(category: Category) {
-        db.collection("Category").document(category.categoryUid).updateData(category.dictionary)
-    }
-    
-    func fetchAllCategories() {
-        db.collection("Category").getDocuments() { (querySnapShot, error) in
+    func fetchAllRecord(categoryName: String) {
+        db.collection("Record").getDocuments() { (querySnapShot, erro) in
             guard let documents = querySnapShot?.documents else {
-                print("No Documents")
+                print("No Record")
                 return
             }
             
-            self.allCategories = documents.map({ (queryDocumentSnapshot) -> Category in
+            let results = documents.map({ (queryDocumentSnapshot) -> Record in
                 let data = queryDocumentSnapshot.data()
-                let categoryUid = data["categoryUid"] as? String ?? ""
-                let adminName = data["adminName"] as? String ?? ""
-                let participants = data["participants"] as? [String] ?? [""]
-                let categoryName = data["categoryName"] as? String ?? ""
-                let categoryDescription = data["categoryDescription"] as? String ?? ""
-//                let categoryImage = data["categoryImage"] as? String ?? ""
-                return category(categoryUid: categoryUid, adminName: adminName, participants: participants, categoryName: categoryName, categoryDescription: categoryDescription)
-            })
-        }
-    }
-    
-    func fetchMyCategories(uid: String) {
-        db.collection("Category").getDocuments() { (querySnapShot, error) in
-            guard let documents = querySnapShot?.documents else {
-                print("No Documents")
-                return
-            }
-            
-            let results = documents.map({ (queryDocumentSnapshot) -> Category in
-                let data = queryDocumentSnapshot.data()
-                if (data["participants"] as? [String] ?? [""]).contains(uid) {
-                    let categoryUid = data["categoryUid"] as? String ?? ""
-                    let adminName = data["adminName"] as? String ?? ""
-                    let participants = data["participants"] as? [String] ?? [""]
+                if (data["categoryName"] as? String ?? "") == categoryName {
+                    let recordUid = data["recordUid"] as? String ?? ""
+                    let userName = data["userName"] as? String ?? ""
                     let categoryName = data["categoryName"] as? String ?? ""
-                    let categoryDescription = data["categoryDescription"] as? String ?? ""
-//                    let categoryImage = data["categoryImage"] as? String ?? ""
-                    return Category(categoryUid: categoryUid, adminName: adminName, participants: participants, categoryName: categoryName, categoryDescription: categoryDescription)
+                    let text = data["text"] as? String ?? ""
+                    let date = data["date"] as? String ?? ""
+                    return Record(recordUid: recordUid, userName: userName, categoryName: categoryName, text: text, date: date)
                 } else {
-                    return Category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")
+                    return Record(recordUid: "", userName: "", categoryName: "", text: "", date: "")
                 }
             })
             
-            self.myCategories = results.filter { $0.categoryUid != "" }
+            self.allRecord = results.filter { $0.recordUid != "" }
         }
     }
     
+    func fetchMyRecord(categoryName: String, userName: String) {
+        db.collection("Record").getDocuments() { (querySnapShot, erro) in
+            guard let documents = querySnapShot?.documents else {
+                print("No Record")
+                return
+            }
+            
+            let results = documents.map({ (queryDocumentSnapshot) -> Record in
+                let data = queryDocumentSnapshot.data()
+                if (data["categoryName"] as? String ?? "") == categoryName && (data["userName"] as? String ?? "") == userName {
+                    let recordUid = data["recordUid"] as? String ?? ""
+                    let userName = data["userName"] as? String ?? ""
+                    let categoryName = data["categoryName"] as? String ?? ""
+                    let text = data["text"] as? String ?? ""
+                    let date = data["date"] as? String ?? ""
+                    return Record(recordUid: recordUid, userName: userName, categoryName: categoryName, text: text, date: date)
+                } else {
+                    return Record(recordUid: "", userName: "", categoryName: "", text: "", date: "")
+                }
+            })
+            
+            self.allRecord = results.filter { $0.recordUid != "" }
+        }
+    }
 
 }
