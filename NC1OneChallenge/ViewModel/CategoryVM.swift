@@ -47,6 +47,40 @@ class CategoryVM: ObservableObject {
         }
     }
     
+    func fetchAll(_ completion: @escaping (_ data: [Category]) -> Void) {
+        var categories = [Category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")]
+        
+        let g = DispatchGroup()
+        g.enter()
+        
+        db.collection("Category").getDocuments() { (querySnapShop, error) in
+            guard let documents = querySnapShop?.documents else {
+                print("No Documents")
+                return
+            }
+            
+            categories = documents.map({ (queryDocumentSnapshot) -> Category in
+                let data = queryDocumentSnapshot.data()
+                let categoryUid = data["categoryUid"] as? String ?? ""
+                let adminName = data["adminName"] as? String ?? ""
+                let participants = data["participants"] as? [String] ?? [""]
+                let categoryName = data["categoryName"] as? String ?? ""
+                let categoryDescription = data["categoryDescription"] as? String ?? ""
+//                let categoryImage = data["categoryImage"] as? String ?? ""
+                return Category(categoryUid: categoryUid, adminName: adminName, participants: participants, categoryName: categoryName, categoryDescription: categoryDescription)
+            })
+            
+            g.leave()
+            
+        }
+        
+        g.notify(queue: .main) {
+            completion(categories)
+        }
+        
+        return
+    }
+    
     func fetchMyCategories(uid: String) {
         db.collection("Category").getDocuments() { (querySnapShot, error) in
             guard let documents = querySnapShot?.documents else {

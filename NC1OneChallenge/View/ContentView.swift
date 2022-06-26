@@ -20,7 +20,8 @@ struct ContentView: View {
     init() {
         category.fetchAllCategories()
         category.fetchMyCategories(uid: getUserInfo().uid)
-        print(getUserInfo().uid)
+        print("첫화면")
+        print("\(category.allCategories)")
     }
     
     var body: some View {

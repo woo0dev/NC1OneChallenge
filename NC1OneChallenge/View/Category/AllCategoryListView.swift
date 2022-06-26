@@ -8,12 +8,20 @@
 import SwiftUI
 
 struct AllCategoryListView: View {
-    @State var categories: [Category]
+    @State var category: CategoryVM
+    @State var categories = [Category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")]
     
     var body: some View {
         VStack {
             List(categories, id: \.self) { category in
                 Text("\(category.categoryName)")
+            }
+            .task {
+                category.fetchAll({ data in
+                    if !(data.isEmpty) {
+                        self.categories = data
+                    }
+                })
             }
         }
     }

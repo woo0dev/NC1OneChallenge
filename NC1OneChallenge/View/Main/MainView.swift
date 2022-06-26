@@ -34,7 +34,7 @@ struct MainView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
                 
-                ChosenCategoryView(categories: selectedSide == .all ? category.allCategories : category.myCategories, selectedSide: selectedSide)
+                ChosenCategoryView(category: category, categories: selectedSide == .all ? category.allCategories : category.myCategories, selectedSide: selectedSide)
                 
                 Spacer()
                 
@@ -48,13 +48,14 @@ struct MainView: View {
 }
 
 struct ChosenCategoryView: View {
+    var category: CategoryVM
     var categories: [Category]
     var selectedSide: CategoryPicker
     
     var body: some View {
         switch selectedSide {
         case .all:
-            AllCategoryListView(categories: categories)
+            AllCategoryListView(category: category, categories: categories)
         case .my:
             MyCategoryListView(categories: categories)
         }
