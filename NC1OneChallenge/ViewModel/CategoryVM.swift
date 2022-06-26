@@ -16,7 +16,7 @@ class CategoryVM: ObservableObject {
     var myCategories: [Category] = [Category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")]
     
     func addCategory(category: Category) {
-        db.collection("Category").document(category.categoryUid).updateData(category.dictionary)
+        db.collection("Category").document(category.categoryUid).setData(category.dictionary)
     }
     
     func deleteCategory(category: Category) {
@@ -24,7 +24,7 @@ class CategoryVM: ObservableObject {
     }
     
     func editCategory(category: Category) {
-        db.collection("Category").document(category.categoryUid).updateData(category.dictionary)
+        db.collection("Category").document(category.categoryUid).setData(category.dictionary)
     }
     
     func fetchAllCategories() {

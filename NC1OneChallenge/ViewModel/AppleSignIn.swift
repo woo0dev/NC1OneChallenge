@@ -101,7 +101,7 @@ extension AppleAuthCoordinator: ASAuthorizationControllerDelegate {
             }
             if let _ = appleIDCredential.email {
                 print("111111 ================= 첫 로그인")
-                db.collection("User").document(Auth.auth().currentUser!.uid).updateData(["\(Auth.auth().currentUser!.uid)": ["uid": Auth.auth().currentUser!.uid, "name": "\(appleIDCredential.fullName!.familyName!)"+"\(appleIDCredential.fullName!.givenName!)"]])
+                db.collection("User").document(Auth.auth().currentUser!.uid).setData(["\(Auth.auth().currentUser!.uid)": ["uid": Auth.auth().currentUser!.uid, "name": "\(appleIDCredential.fullName!.familyName!)"+"\(appleIDCredential.fullName!.givenName!)"]])
             } else {
                 print("222222 ================== 로그인 했었음")
             }

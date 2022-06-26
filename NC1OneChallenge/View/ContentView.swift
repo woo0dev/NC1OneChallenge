@@ -34,22 +34,3 @@ struct ContentView: View {
         appleLoginCoordinator?.startAppleLogin()
     }
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
-struct customButtonStyle: ButtonStyle {
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .frame(maxWidth: .infinity)
-            .frame(height: 55)
-            .font(.custom("BMJUAOTF", size: 30))
-            .foregroundColor(Color.white)
-            .background(Color("MainColor"))
-            .cornerRadius(10)
-            .padding(.horizontal, 30)
-    }
-}

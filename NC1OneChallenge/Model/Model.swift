@@ -57,3 +57,8 @@ struct User {
         ]
     }
 }
+
+enum CategoryPicker: String, CaseIterable {
+    case all = "모든 카테고리"
+    case my = "나의 카테고리"
+}

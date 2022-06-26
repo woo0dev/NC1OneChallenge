@@ -16,11 +16,11 @@ class RecordVM: ObservableObject {
     var myRecord = [Record(recordUid: "", userName: "", categoryName: "", text: "", date: "")]
     
     func addRecord(record: Record) {
-        db.collection("Record").document(record.recordUid).updateData(record.dictionary)
+        db.collection("Record").document(record.recordUid).setData(record.dictionary)
     }
     
     func deleteRecord(record: Record) {
-        db.collection("Record").document(record.recordUid).updateData(record.dictionary)
+        db.collection("Record").document(record.recordUid).delete()
     }
     
     func fetchAllRecord(categoryName: String) {
