@@ -15,15 +15,16 @@ struct ContentView: View {
     
     @State private var appleLoginCoordinator: AppleAuthCoordinator?
     @State var isSignIn: Bool = Auth.auth().currentUser == nil ? true : false
-    @State var category = CategoryVM()
+    @ObservedObject var category = CategoryVM()
 
     init() {
         category.fetchAllCategories()
-        category.fetchMyCategories(uid: Auth.auth().currentUser?.uid != nil ? Auth.auth().currentUser!.uid : "")
+        category.fetchMyCategories(uid: getUserInfo().uid)
+        print(getUserInfo().uid)
     }
     
     var body: some View {
-        MainView(isSignIn: $isSignIn)
+        MainView(isSignIn: $isSignIn, category: category)
             .fullScreenCover(isPresented: $isSignIn, content: {
                 QuickSignInWithApple()
                     .frame(maxWidth: .infinity)

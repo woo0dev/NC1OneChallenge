@@ -47,12 +47,12 @@ struct Record: Hashable {
 }
 
 struct User {
-    var Uid: String
+    var uid: String
     var name: String
     
     var dictionary: [String: String] {
         return [
-            "Uid": Uid,
+            "uid": uid,
             "name": name,
         ]
     }

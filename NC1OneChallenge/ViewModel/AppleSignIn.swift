@@ -144,3 +144,7 @@ struct QuickSignInWithApple: UIViewRepresentable {
     func updateUIView(_ uiView: UIViewType, context: Context) {
     }
 }
+
+func getUserInfo() -> User {
+    return User(uid: Auth.auth().currentUser?.uid != nil ? Auth.auth().currentUser!.uid : "", name: Auth.auth().currentUser?.displayName != nil ? Auth.auth().currentUser!.displayName! : "")
+}

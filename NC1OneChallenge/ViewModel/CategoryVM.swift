@@ -12,8 +12,8 @@ import FirebaseFirestore
 
 class CategoryVM: ObservableObject {
     let db = Firestore.firestore()
-    var allCategories: [Category] = [Category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")]
-    var myCategories: [Category] = [Category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")]
+    @Published var allCategories: [Category] = [Category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")]
+    @Published var myCategories: [Category] = [Category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")]
     
     func addCategory(category: Category) {
         db.collection("Category").document(category.categoryUid).setData(category.dictionary)

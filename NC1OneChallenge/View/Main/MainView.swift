@@ -13,13 +13,14 @@ import AuthenticationServices
 struct MainView: View {
     @Binding var isSignIn: Bool
     
-    @EnvironmentObject var category: CategoryVM
+    @ObservedObject var category: CategoryVM
     @State private var selectedSide: CategoryPicker = .all
     
-    init(isSignIn: Binding<Bool>) {
+    init(isSignIn: Binding<Bool>, category: CategoryVM) {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color("MainColor"))
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         self._isSignIn = isSignIn
+        self.category = category
     }
     
     var body: some View {
@@ -37,6 +38,10 @@ struct MainView: View {
                 
                 Spacer()
                 
+            }
+            .task {
+                self.category.fetchAllCategories()
+                self.category.fetchMyCategories(uid: getUserInfo().uid)
             }
         }
     }
