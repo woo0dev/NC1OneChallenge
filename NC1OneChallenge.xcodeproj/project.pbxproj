@@ -35,6 +35,8 @@
 		E2C8D5122865F87300273DBE /* RecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D5112865F87300273DBE /* RecordVM.swift */; };
 		E2C8D5272868A19A00273DBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2C8D5262868A19A00273DBE /* GoogleService-Info.plist */; };
 		E2C8D5292868A6F400273DBE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D5282868A6F400273DBE /* MainView.swift */; };
+		E2C8D52B2868B7E600273DBE /* AllCategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D52A2868B7E600273DBE /* AllCategoryListView.swift */; };
+		E2C8D52D2868B7F600273DBE /* MyCategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D52C2868B7F600273DBE /* MyCategoryListView.swift */; };
 		E2F6A0B5281ADD80006F5371 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */; };
 		E2F6A0B9281AEE66006F5371 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */; };
 		E2F6A0BB281AFAB6006F5371 /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0BA281AFAB6006F5371 /* AddPostView.swift */; };
@@ -62,6 +64,8 @@
 		E2C8D5112865F87300273DBE /* RecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVM.swift; sourceTree = "<group>"; };
 		E2C8D5262868A19A00273DBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E2C8D5282868A6F400273DBE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E2C8D52A2868B7E600273DBE /* AllCategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategoryListView.swift; sourceTree = "<group>"; };
+		E2C8D52C2868B7F600273DBE /* MyCategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCategoryListView.swift; sourceTree = "<group>"; };
 		E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		E2F6A0BA281AFAB6006F5371 /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 			children = (
 				E2A13245281AC92400AE12BC /* AddCategoryView.swift */,
 				E2A1324B281AD1D700AE12BC /* CategoryDetailView.swift */,
+				E2C8D52A2868B7E600273DBE /* AllCategoryListView.swift */,
+				E2C8D52C2868B7F600273DBE /* MyCategoryListView.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -288,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2C8D52B2868B7E600273DBE /* AllCategoryListView.swift in Sources */,
 				E26F5AE2282180A400EA0916 /* AppleSignIn.swift in Sources */,
 				E2A1324A281ACA9100AE12BC /* Model.swift in Sources */,
 				E2F6A0BB281AFAB6006F5371 /* AddPostView.swift in Sources */,
@@ -304,6 +311,7 @@
 				E231CEC0282170ED0010955C /* DateFormat.swift in Sources */,
 				E26F5AE42821837D00EA0916 /* ProfileView.swift in Sources */,
 				E2A1324C281AD1D700AE12BC /* CategoryDetailView.swift in Sources */,
+				E2C8D52D2868B7F600273DBE /* MyCategoryListView.swift in Sources */,
 				E2C8D5122865F87300273DBE /* RecordVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

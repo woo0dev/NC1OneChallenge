@@ -12,8 +12,15 @@ import AuthenticationServices
 
 struct ContentView: View {
     @Environment(\.window) var window: UIWindow?
+    
     @State private var appleLoginCoordinator: AppleAuthCoordinator?
     @State var isSignIn: Bool = Auth.auth().currentUser == nil ? true : false
+    @State var category = CategoryVM()
+
+    init() {
+        category.fetchAllCategories()
+        category.fetchMyCategories(uid: Auth.auth().currentUser?.uid != nil ? Auth.auth().currentUser!.uid : "")
+    }
     
     var body: some View {
         MainView(isSignIn: $isSignIn)
@@ -27,6 +34,7 @@ struct ContentView: View {
                     .padding(.bottom, 60)
                     .padding(.horizontal, 17)
             })
+            .environmentObject(category)
     }
     
     func appleLogin() {
