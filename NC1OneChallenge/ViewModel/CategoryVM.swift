@@ -27,6 +27,20 @@ class CategoryVM: ObservableObject {
         db.collection("Category").document(category.categoryUid).setData(category.dictionary)
     }
     
+    func addParticipantCategory(category: Category, userUid: String) {
+        var temporaryCategory = category
+        var participants = temporaryCategory.participants
+        participants.append(userUid)
+        temporaryCategory.participants = participants
+        db.collection("Category").document(temporaryCategory.categoryUid).setData(temporaryCategory.dictionary)
+    }
+    
+    func deleteParticipantCategory(category: Category, userUid: String) {
+        var temporaryCategory = category
+        temporaryCategory.participants = temporaryCategory.participants.filter { $0 != userUid }
+        db.collection("Category").document(temporaryCategory.categoryUid).setData(temporaryCategory.dictionary)
+    }
+    
     func fetchAllCategories() {
         db.collection("Category").getDocuments() { (querySnapShot, error) in
             guard let documents = querySnapShot?.documents else {
