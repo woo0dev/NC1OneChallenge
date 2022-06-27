@@ -21,8 +21,6 @@ struct ContentView: View {
     init() {
         categoryVM.fetchAllCategories()
         categoryVM.fetchMyCategories(uid: getUserInfo().uid)
-        print("첫화면")
-        print("\(categoryVM.allCategories)")
     }
     
     var body: some View {

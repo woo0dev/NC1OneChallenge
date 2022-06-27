@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CategoryDetailView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @State var category: Category
     
     var categoryVM: CategoryVM
@@ -52,6 +54,14 @@ struct CategoryDetailView: View {
                 }
             }
         }
+        .navigationBarTitle("", displayMode: .inline)
+    }
+    var backButton : some View { Button(action: {
+        self.presentationMode.wrappedValue.dismiss()
+    }) {
+        Text("<")
+            .foregroundColor(Color("MainColor"))
+    }
     }
 }
 

@@ -44,6 +44,7 @@ struct MainView: View {
                 self.categoryVM.fetchAllCategories()
                 self.categoryVM.fetchMyCategories(uid: getUserInfo().uid)
             }
+            .navigationBarHidden(true)
         }
     }
 }
