@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct AllCategoryListView: View {
-    @State var category: CategoryVM
+    @State var categoryVM: CategoryVM
     @State var categories = [Category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")]
     
     var body: some View {
         VStack {
             List(categories, id: \.self) { category in
                 NavigationLink(destination: {
-                    CategoryDetailView()
+                    CategoryDetailView(category: category, categoryVM: categoryVM)
                 }, label: {
                     Text(category.categoryName)
                 })
             }
             .listStyle(.plain)
             .task {
-                category.fetchAll({ data in
+                categoryVM.fetchAll({ data in
                     if !(data.isEmpty) {
                         self.categories = data
                     }

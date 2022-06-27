@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct MyCategoryListView: View {
+    @State var categoryVM: CategoryVM
     @State var categories: [Category]
     
     var body: some View {
         VStack {
             List(categories, id: \.self) { category in
                 NavigationLink(destination: {
-                    CategoryDetailView()
+                    CategoryDetailView(category: category, categoryVM: categoryVM)
                 }, label: {
                     Text(category.categoryName)
                 })

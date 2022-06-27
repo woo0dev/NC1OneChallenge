@@ -34,7 +34,6 @@ struct Record: Hashable {
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(categoryName)
-        hasher.combine(text)
         hasher.combine(date)
     }
     

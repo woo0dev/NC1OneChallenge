@@ -15,13 +15,13 @@ struct MainView: View {
     
     @State private var selectedSide: CategoryPicker = .all
     
-    var category: CategoryVM
+    var categoryVM: CategoryVM
     
-    init(isSignIn: Binding<Bool>, category: CategoryVM) {
+    init(isSignIn: Binding<Bool>, categoryVM: CategoryVM) {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color("MainColor"))
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         self._isSignIn = isSignIn
-        self.category = category
+        self.categoryVM = categoryVM
     }
     
     var body: some View {
@@ -35,30 +35,30 @@ struct MainView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
                 
-                ChosenCategoryView(category: category, categories: selectedSide == .all ? category.allCategories : category.myCategories, selectedSide: selectedSide)
+                ChosenCategoryView(categoryVM: categoryVM, categories: selectedSide == .all ? categoryVM.allCategories : categoryVM.myCategories, selectedSide: selectedSide)
                 
                 Spacer()
                 
             }
             .task {
-                self.category.fetchAllCategories()
-                self.category.fetchMyCategories(uid: getUserInfo().uid)
+                self.categoryVM.fetchAllCategories()
+                self.categoryVM.fetchMyCategories(uid: getUserInfo().uid)
             }
         }
     }
 }
 
 struct ChosenCategoryView: View {
-    var category: CategoryVM
+    var categoryVM: CategoryVM
     var categories: [Category]
     var selectedSide: CategoryPicker
     
     var body: some View {
         switch selectedSide {
         case .all:
-            AllCategoryListView(category: category, categories: categories)
+            AllCategoryListView(categoryVM: categoryVM, categories: categories)
         case .my:
-            MyCategoryListView(categories: categories)
+            MyCategoryListView(categoryVM: categoryVM, categories: categories)
         }
     }
 }
