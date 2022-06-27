@@ -12,8 +12,8 @@ import FirebaseFirestore
 
 class RecordVM: ObservableObject {
     let db = Firestore.firestore()
-    var allRecord = [Record(recordUid: "", userName: "", categoryName: "", text: "", date: "")]
-    var myRecord = [Record(recordUid: "", userName: "", categoryName: "", text: "", date: "")]
+    var allRecord = [Record(recordUid: "", userUid: "", userName: "", categoryName: "", count: "", date: "")]
+    var myRecord = [Record(recordUid: "", userUid: "", userName: "", categoryName: "", count: "", date: "")]
     
     func addRecord(record: Record) {
         db.collection("Record").document(record.recordUid).setData(record.dictionary)
@@ -34,13 +34,14 @@ class RecordVM: ObservableObject {
                 let data = queryDocumentSnapshot.data()
                 if (data["categoryName"] as? String ?? "") == categoryName {
                     let recordUid = data["recordUid"] as? String ?? ""
+                    let userUid = data["userUid"] as? String ?? ""
                     let userName = data["userName"] as? String ?? ""
                     let categoryName = data["categoryName"] as? String ?? ""
-                    let text = data["text"] as? String ?? ""
+                    let count = data["count"] as? String ?? ""
                     let date = data["date"] as? String ?? ""
-                    return Record(recordUid: recordUid, userName: userName, categoryName: categoryName, text: text, date: date)
+                    return Record(recordUid: recordUid, userUid: userUid, userName: userName, categoryName: categoryName, count: count, date: date)
                 } else {
-                    return Record(recordUid: "", userName: "", categoryName: "", text: "", date: "")
+                    return Record(recordUid: "", userUid: "", userName: "", categoryName: "", count: "", date: "")
                 }
             })
             
@@ -59,13 +60,14 @@ class RecordVM: ObservableObject {
                 let data = queryDocumentSnapshot.data()
                 if (data["categoryName"] as? String ?? "") == categoryName && (data["userName"] as? String ?? "") == userName {
                     let recordUid = data["recordUid"] as? String ?? ""
+                    let userUid = data["userUid"] as? String ?? ""
                     let userName = data["userName"] as? String ?? ""
                     let categoryName = data["categoryName"] as? String ?? ""
-                    let text = data["text"] as? String ?? ""
+                    let count = data["count"] as? String ?? ""
                     let date = data["date"] as? String ?? ""
-                    return Record(recordUid: recordUid, userName: userName, categoryName: categoryName, text: text, date: date)
+                    return Record(recordUid: recordUid, userUid: userUid, userName: userName, categoryName: categoryName, count: count, date: date)
                 } else {
-                    return Record(recordUid: "", userName: "", categoryName: "", text: "", date: "")
+                    return Record(recordUid: "", userUid: "", userName: "", categoryName: "", count: "", date: "")
                 }
             })
             

@@ -1,4 +1,5 @@
 import SwiftUI
+
 struct Category: Hashable {
     var categoryUid = UUID().uuidString
     var adminName: String
@@ -21,11 +22,13 @@ struct Category: Hashable {
         ]
     }
 }
+
 struct Record: Hashable {
     var recordUid: String
+    var userUid: String
     var userName: String
     var categoryName: String
-    var text: String
+    var count: String
     var date: String
     
     
@@ -38,9 +41,10 @@ struct Record: Hashable {
     var dictionary: [String: String] {
         return [
             "recordUid": recordUid,
+            "userUid": userUid,
             "userName": userName,
             "categoryName": categoryName,
-            "text": text,
+            "count": count,
             "date": date,
         ]
     }
