@@ -12,8 +12,8 @@ import FirebaseFirestore
 
 class RecordVM: ObservableObject {
     let db = Firestore.firestore()
-    var allRecord = [Record(recordUid: "", userUid: "", userName: "", categoryName: "", count: "", date: "")]
-    var myRecord = [Record(recordUid: "", userUid: "", userName: "", categoryName: "", count: "", date: "")]
+    var allRecord = [Record(recordUid: "", userUid: "", userName: "", categoryName: "", date: "")]
+    var myRecord = [Record(recordUid: "", userUid: "", userName: "", categoryName: "", date: "")]
     
     func addRecord(record: Record) {
         db.collection("Record").document(record.recordUid).setData(record.dictionary)
@@ -37,11 +37,10 @@ class RecordVM: ObservableObject {
                     let userUid = data["userUid"] as? String ?? ""
                     let userName = data["userName"] as? String ?? ""
                     let categoryName = data["categoryName"] as? String ?? ""
-                    let count = data["count"] as? String ?? ""
                     let date = data["date"] as? String ?? ""
-                    return Record(recordUid: recordUid, userUid: userUid, userName: userName, categoryName: categoryName, count: count, date: date)
+                    return Record(recordUid: recordUid, userUid: userUid, userName: userName, categoryName: categoryName, date: date)
                 } else {
-                    return Record(recordUid: "", userUid: "", userName: "", categoryName: "", count: "", date: "")
+                    return Record(recordUid: "", userUid: "", userName: "", categoryName: "", date: "")
                 }
             })
             
@@ -49,7 +48,7 @@ class RecordVM: ObservableObject {
         }
     }
     
-    func fetchMyRecord(categoryName: String, userName: String) {
+    func fetchMyRecod(categoryName: String, userUid: String) {
         db.collection("Record").getDocuments() { (querySnapShot, erro) in
             guard let documents = querySnapShot?.documents else {
                 print("No Record")
@@ -58,21 +57,58 @@ class RecordVM: ObservableObject {
             
             let results = documents.map({ (queryDocumentSnapshot) -> Record in
                 let data = queryDocumentSnapshot.data()
-                if (data["categoryName"] as? String ?? "") == categoryName && (data["userName"] as? String ?? "") == userName {
+                if (data["categoryName"] as? String ?? "") == categoryName && (data["userUid"] as? String ?? "") == userUid {
                     let recordUid = data["recordUid"] as? String ?? ""
                     let userUid = data["userUid"] as? String ?? ""
                     let userName = data["userName"] as? String ?? ""
                     let categoryName = data["categoryName"] as? String ?? ""
-                    let count = data["count"] as? String ?? ""
                     let date = data["date"] as? String ?? ""
-                    return Record(recordUid: recordUid, userUid: userUid, userName: userName, categoryName: categoryName, count: count, date: date)
+                    return Record(recordUid: recordUid, userUid: userUid, userName: userName, categoryName: categoryName, date: date)
                 } else {
-                    return Record(recordUid: "", userUid: "", userName: "", categoryName: "", count: "", date: "")
+                    return Record(recordUid: "", userUid: "", userName: "", categoryName: "", date: "")
                 }
             })
             
             self.allRecord = results.filter { $0.recordUid != "" }
         }
     }
-
+    
+    func fetchMyRecord(categoryName: String, userUid: String, _ completion: @escaping (_ data: [Record]) -> Void) {
+        var records = [Record(recordUid: "", userUid: "", userName: "", categoryName: "", date: "")]
+        
+        let g = DispatchGroup()
+        g.enter()
+        
+        db.collection("Record").getDocuments() { (querySnapShot, error) in
+            guard let documents = querySnapShot?.documents else {
+                print("No Documents")
+                return
+            }
+            
+            records = documents.map({ (queryDocumentSnapshot) -> Record in
+                let data = queryDocumentSnapshot.data()
+                if (data["categoryName"] as? String ?? "") == categoryName && (data["userUid"] as? String ?? "") == userUid {
+                    let recordUid = data["recordUid"] as? String ?? ""
+                    let userUid = data["userUid"] as? String ?? ""
+                    let userName = data["userName"] as? String ?? ""
+                    let categoryName = data["categoryName"] as? String ?? ""
+                    let date = data["date"] as? String ?? ""
+                    return Record(recordUid: recordUid, userUid: userUid, userName: userName, categoryName: categoryName, date: date)
+                } else {
+                    return Record(recordUid: "", userUid: "", userName: "", categoryName: "", date: "")
+                }
+            })
+            
+            g.leave()
+        }
+        
+        records = records.filter { $0.recordUid != "" }
+        
+        g.notify(queue: .main) {
+            completion(records)
+        }
+        
+        return
+        
+    }
 }

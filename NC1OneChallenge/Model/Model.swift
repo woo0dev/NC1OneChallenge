@@ -28,7 +28,6 @@ struct Record: Hashable {
     var userUid: String
     var userName: String
     var categoryName: String
-    var count: String
     var date: String
     
     
@@ -43,7 +42,6 @@ struct Record: Hashable {
             "userUid": userUid,
             "userName": userName,
             "categoryName": categoryName,
-            "count": count,
             "date": date,
         ]
     }

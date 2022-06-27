@@ -28,7 +28,7 @@
 		E2A1323F281AC81700AE12BC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2A1323E281AC81700AE12BC /* Preview Assets.xcassets */; };
 		E2A13246281AC92400AE12BC /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A13245281AC92400AE12BC /* AddCategoryView.swift */; };
 		E2A1324A281ACA9100AE12BC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A13249281ACA9100AE12BC /* Model.swift */; };
-		E2A1324C281AD1D700AE12BC /* CategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1324B281AD1D700AE12BC /* CategoryDetailView.swift */; };
+		E2A1324C281AD1D700AE12BC /* AllCategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1324B281AD1D700AE12BC /* AllCategoryDetailView.swift */; };
 		E2A1324F281AD65500AE12BC /* BMJUA_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = E2A1324E281AD65500AE12BC /* BMJUA_otf.otf */; };
 		E2C8D50E28644D2700273DBE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D50D28644D2700273DBE /* ColorExtension.swift */; };
 		E2C8D51028644D4000273DBE /* CategoryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D50F28644D4000273DBE /* CategoryVM.swift */; };
@@ -38,6 +38,7 @@
 		E2C8D52B2868B7E600273DBE /* AllCategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D52A2868B7E600273DBE /* AllCategoryListView.swift */; };
 		E2C8D52D2868B7F600273DBE /* MyCategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D52C2868B7F600273DBE /* MyCategoryListView.swift */; };
 		E2C8D5342869E88100273DBE /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D5332869E88100273DBE /* InfoView.swift */; };
+		E2C8D5362869F2C200273DBE /* MyCategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D5352869F2C200273DBE /* MyCategoryDetailView.swift */; };
 		E2F6A0B5281ADD80006F5371 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */; };
 		E2F6A0B9281AEE66006F5371 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */; };
 		E2F6A0BB281AFAB6006F5371 /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0BA281AFAB6006F5371 /* AddPostView.swift */; };
@@ -57,7 +58,7 @@
 		E2A1323E281AC81700AE12BC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E2A13245281AC92400AE12BC /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		E2A13249281ACA9100AE12BC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		E2A1324B281AD1D700AE12BC /* CategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailView.swift; sourceTree = "<group>"; };
+		E2A1324B281AD1D700AE12BC /* AllCategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategoryDetailView.swift; sourceTree = "<group>"; };
 		E2A1324E281AD65500AE12BC /* BMJUA_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMJUA_otf.otf; sourceTree = "<group>"; };
 		E2A13250281AD67400AE12BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E2C8D50D28644D2700273DBE /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -68,6 +69,7 @@
 		E2C8D52A2868B7E600273DBE /* AllCategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategoryListView.swift; sourceTree = "<group>"; };
 		E2C8D52C2868B7F600273DBE /* MyCategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCategoryListView.swift; sourceTree = "<group>"; };
 		E2C8D5332869E88100273DBE /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		E2C8D5352869F2C200273DBE /* MyCategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCategoryDetailView.swift; sourceTree = "<group>"; };
 		E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		E2F6A0BA281AFAB6006F5371 /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
@@ -193,9 +195,10 @@
 			isa = PBXGroup;
 			children = (
 				E2A13245281AC92400AE12BC /* AddCategoryView.swift */,
-				E2A1324B281AD1D700AE12BC /* CategoryDetailView.swift */,
+				E2A1324B281AD1D700AE12BC /* AllCategoryDetailView.swift */,
 				E2C8D52A2868B7E600273DBE /* AllCategoryListView.swift */,
 				E2C8D52C2868B7F600273DBE /* MyCategoryListView.swift */,
+				E2C8D5352869F2C200273DBE /* MyCategoryDetailView.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2C8D52B2868B7E600273DBE /* AllCategoryListView.swift in Sources */,
+				E2C8D5362869F2C200273DBE /* MyCategoryDetailView.swift in Sources */,
 				E26F5AE2282180A400EA0916 /* AppleSignIn.swift in Sources */,
 				E2A1324A281ACA9100AE12BC /* Model.swift in Sources */,
 				E2F6A0BB281AFAB6006F5371 /* AddPostView.swift in Sources */,
@@ -322,7 +326,7 @@
 				E2C8D51028644D4000273DBE /* CategoryVM.swift in Sources */,
 				E231CEC0282170ED0010955C /* DateFormat.swift in Sources */,
 				E26F5AE42821837D00EA0916 /* ProfileView.swift in Sources */,
-				E2A1324C281AD1D700AE12BC /* CategoryDetailView.swift in Sources */,
+				E2A1324C281AD1D700AE12BC /* AllCategoryDetailView.swift in Sources */,
 				E2C8D52D2868B7F600273DBE /* MyCategoryListView.swift in Sources */,
 				E2C8D5122865F87300273DBE /* RecordVM.swift in Sources */,
 			);

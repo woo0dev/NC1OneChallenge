@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CategoryDetailView: View {
+struct AllCategoryDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State var category: Category
@@ -33,6 +33,7 @@ struct CategoryDetailView: View {
                     if category.participants.contains(getUserInfo().uid) {
                         Button(action: {
                             categoryVM.deleteParticipantCategory(category: category, userUid: getUserInfo().uid)
+                            self.presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Text("즐겨찾기 삭제")
                         })
@@ -43,6 +44,7 @@ struct CategoryDetailView: View {
                     } else {
                         Button(action: {
                             categoryVM.addParticipantCategory(category: category, userUid: getUserInfo().uid)
+                            self.presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Text("즐겨찾기 추가")
                         })

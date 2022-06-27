@@ -15,7 +15,7 @@ struct MyCategoryListView: View {
         VStack {
             List(categories, id: \.self) { category in
                 NavigationLink(destination: {
-                    CategoryDetailView(category: category, categoryVM: categoryVM)
+                    MyCategoryDetailView(category: category, categoryVM: categoryVM)
                 }, label: {
                     Text(category.categoryName)
                 })
