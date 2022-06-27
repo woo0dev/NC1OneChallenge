@@ -37,6 +37,7 @@
 		E2C8D5292868A6F400273DBE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D5282868A6F400273DBE /* MainView.swift */; };
 		E2C8D52B2868B7E600273DBE /* AllCategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D52A2868B7E600273DBE /* AllCategoryListView.swift */; };
 		E2C8D52D2868B7F600273DBE /* MyCategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D52C2868B7F600273DBE /* MyCategoryListView.swift */; };
+		E2C8D5342869E88100273DBE /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D5332869E88100273DBE /* InfoView.swift */; };
 		E2F6A0B5281ADD80006F5371 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */; };
 		E2F6A0B9281AEE66006F5371 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */; };
 		E2F6A0BB281AFAB6006F5371 /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0BA281AFAB6006F5371 /* AddPostView.swift */; };
@@ -66,6 +67,7 @@
 		E2C8D5282868A6F400273DBE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E2C8D52A2868B7E600273DBE /* AllCategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategoryListView.swift; sourceTree = "<group>"; };
 		E2C8D52C2868B7F600273DBE /* MyCategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCategoryListView.swift; sourceTree = "<group>"; };
+		E2C8D5332869E88100273DBE /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		E2F6A0B8281AEE66006F5371 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		E2F6A0BA281AFAB6006F5371 /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		E231CEC12821780F0010955C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E2C8D5302869E16300273DBE /* Setting */,
 				E2C8D50A28644B2500273DBE /* Category */,
 				E2C8D50928644B1F00273DBE /* Main */,
 				E2A13237281AC81600AE12BC /* NC1OneChallengeApp.swift */,
@@ -206,6 +209,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		E2C8D5302869E16300273DBE /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				E2C8D5332869E88100273DBE /* InfoView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -302,6 +313,7 @@
 				E2A13246281AC92400AE12BC /* AddCategoryView.swift in Sources */,
 				E2F6A0B9281AEE66006F5371 /* PostDetailView.swift in Sources */,
 				E2A1323A281AC81600AE12BC /* ContentView.swift in Sources */,
+				E2C8D5342869E88100273DBE /* InfoView.swift in Sources */,
 				E231CEBE2821201A0010955C /* CalendarView.swift in Sources */,
 				E2C8D50E28644D2700273DBE /* ColorExtension.swift in Sources */,
 				E2F6A0BD281BC86B006F5371 /* ImagePicker.swift in Sources */,

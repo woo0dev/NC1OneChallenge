@@ -44,7 +44,23 @@ struct MainView: View {
                 self.categoryVM.fetchAllCategories()
                 self.categoryVM.fetchMyCategories(uid: getUserInfo().uid)
             }
-            .navigationBarHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    NavigationLink(destination: {
+                        InfoView()
+                    }, label: {
+                        Image(systemName: "person")
+                    })
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: {
+                        AddCategoryView()
+                    }, label: {
+                        Image(systemName: "plus")
+                    })
+                }
+            }
+            .navigationBarTitle("", displayMode: .inline)
         }
     }
 }
