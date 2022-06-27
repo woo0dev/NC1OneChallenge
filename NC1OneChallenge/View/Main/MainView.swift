@@ -54,7 +54,7 @@ struct MainView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: {
-                        AddCategoryView()
+                        AddCategoryView(categoryVM: categoryVM)
                     }, label: {
                         Image(systemName: "plus")
                     })
