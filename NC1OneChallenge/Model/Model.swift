@@ -24,7 +24,7 @@ struct Category: Hashable {
 }
 
 struct Record: Hashable {
-    var recordUid: String
+    var recordUid = UUID().uuidString
     var userUid: String
     var userName: String
     var categoryName: String

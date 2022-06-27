@@ -26,9 +26,10 @@ struct MyCategoryDetailView: View {
             .frame(maxWidth: .infinity-30, alignment: .leading)
             .padding(.leading, 15)
             .padding(.bottom, 30)
-            VStack(alignment:.leading) {
+            VStack(alignment:.leading, spacing: 3) {
                 Text("내 기록")
-                    .font(.title)
+                    .font(.title2)
+                Text("총 횟수: \(records.count)")
                 ForEach(records, id: \.self) { record in
                     Text(record.date)
                 }
@@ -37,19 +38,29 @@ struct MyCategoryDetailView: View {
             .padding(.leading, 15)
             .padding(.bottom, 30)
             Spacer()
-            HStack(alignment: .center) {
+            VStack(alignment: .center) {
                 HStack(alignment: .center) {
                     Button(action: {
-                        categoryVM.deleteParticipantCategory(category: category, userUid: getUserInfo().uid)
+                        record.addRecord(record: Record(userUid: getUserInfo().uid, userName: getUserInfo().name, categoryName: category.categoryName, date: dateFormat(Date())))
                         self.presentationMode.wrappedValue.dismiss()
                     }, label: {
-                        Text("즐겨찾기 삭제")
+                        Text("추가")
                     })
                     .frame(width: 230, height: 45)
                     .font(.system(size: 14))
                     .foregroundColor(Color("BlackColor"))
                     .border(Color("MainColor"), width: 2)
                 }
+                Button(action: {
+                    categoryVM.deleteParticipantCategory(category: category, userUid: getUserInfo().uid)
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text("즐겨찾기 삭제")
+                })
+                .frame(width: 230, height: 45)
+                .font(.system(size: 14))
+                .foregroundColor(Color("BlackColor"))
+                .border(Color("MainColor"), width: 2)
             }
         }
         .navigationBarTitle("", displayMode: .inline)

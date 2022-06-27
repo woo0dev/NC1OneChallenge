@@ -85,7 +85,7 @@ class RecordVM: ObservableObject {
                 return
             }
             
-            records = documents.map({ (queryDocumentSnapshot) -> Record in
+            self.myRecord = documents.map({ (queryDocumentSnapshot) -> Record in
                 let data = queryDocumentSnapshot.data()
                 if (data["categoryName"] as? String ?? "") == categoryName && (data["userUid"] as? String ?? "") == userUid {
                     let recordUid = data["recordUid"] as? String ?? ""
@@ -102,7 +102,7 @@ class RecordVM: ObservableObject {
             g.leave()
         }
         
-        records = records.filter { $0.recordUid != "" }
+        records = myRecord.filter { $0.recordUid != "" }
         
         g.notify(queue: .main) {
             completion(records)
