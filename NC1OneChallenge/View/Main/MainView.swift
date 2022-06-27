@@ -13,8 +13,9 @@ import AuthenticationServices
 struct MainView: View {
     @Binding var isSignIn: Bool
     
-    @ObservedObject var category: CategoryVM
     @State private var selectedSide: CategoryPicker = .all
+    
+    var category: CategoryVM
     
     init(isSignIn: Binding<Bool>, category: CategoryVM) {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color("MainColor"))

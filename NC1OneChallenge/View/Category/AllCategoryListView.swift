@@ -14,8 +14,13 @@ struct AllCategoryListView: View {
     var body: some View {
         VStack {
             List(categories, id: \.self) { category in
-                Text("\(category.categoryName)")
+                NavigationLink(destination: {
+                    CategoryDetailView()
+                }, label: {
+                    Text(category.categoryName)
+                })
             }
+            .listStyle(.plain)
             .task {
                 category.fetchAll({ data in
                     if !(data.isEmpty) {

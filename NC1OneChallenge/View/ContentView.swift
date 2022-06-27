@@ -15,7 +15,8 @@ struct ContentView: View {
     
     @State private var appleLoginCoordinator: AppleAuthCoordinator?
     @State var isSignIn: Bool = Auth.auth().currentUser == nil ? true : false
-    @ObservedObject var category = CategoryVM()
+    
+    var category = CategoryVM()
 
     init() {
         category.fetchAllCategories()
