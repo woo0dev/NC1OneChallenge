@@ -13,6 +13,7 @@ struct AllCategoryDetailView: View {
     @State var category: Category
     
     var categoryVM: CategoryVM
+    var user: User
     
     var body: some View {
         VStack {
@@ -30,9 +31,9 @@ struct AllCategoryDetailView: View {
             Spacer()
             HStack(alignment: .center) {
                 HStack(alignment: .center) {
-                    if category.participants.contains(getUserInfo().uid) {
+                    if category.participants.contains(user.uid) {
                         Button(action: {
-                            categoryVM.deleteParticipantCategory(category: category, userUid: getUserInfo().uid)
+                            categoryVM.deleteParticipantCategory(category: category, userUid: user.uid)
                             self.presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Text("즐겨찾기 삭제")
@@ -43,7 +44,7 @@ struct AllCategoryDetailView: View {
                         .border(Color("MainColor"), width: 2)
                     } else {
                         Button(action: {
-                            categoryVM.addParticipantCategory(category: category, userUid: getUserInfo().uid)
+                            categoryVM.addParticipantCategory(category: category, userUid: user.uid)
                             self.presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Text("즐겨찾기 추가")

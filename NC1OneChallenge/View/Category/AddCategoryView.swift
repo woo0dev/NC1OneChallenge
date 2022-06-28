@@ -14,6 +14,7 @@ struct AddCategoryView: View {
     @State var description = ""
     
     var categoryVM: CategoryVM
+    var user: User
     
     var body: some View {
         VStack {
@@ -35,7 +36,7 @@ struct AddCategoryView: View {
             Spacer()
             VStack(alignment: .center) {
                 Button(action: {
-                    categoryVM.addCategory(category: Category(adminName: getUserInfo().name, participants: [getUserInfo().uid], categoryName: title, categoryDescription: description))
+                    categoryVM.addCategory(category: Category(adminName: user.name, participants: [user.uid], categoryName: title, categoryDescription: description))
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("만들기")

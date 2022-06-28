@@ -11,11 +11,13 @@ struct MyCategoryListView: View {
     @State var categoryVM: CategoryVM
     @State var categories: [Category]
     
+    var user: User
+    
     var body: some View {
         VStack {
             List(categories, id: \.self) { category in
                 NavigationLink(destination: {
-                    MyCategoryDetailView(category: category, categoryVM: categoryVM)
+                    MyCategoryDetailView(category: category, categoryVM: categoryVM, user: user)
                 }, label: {
                     Text(category.categoryName)
                 })

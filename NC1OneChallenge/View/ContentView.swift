@@ -16,15 +16,17 @@ struct ContentView: View {
     @State private var appleLoginCoordinator: AppleAuthCoordinator?
     @State var isSignIn: Bool = Auth.auth().currentUser == nil ? true : false
     
+    @State var user = User(uid: "", name: "")
+    
     var categoryVM = CategoryVM()
 
-    init() {
-        categoryVM.fetchAllCategories()
-        categoryVM.fetchMyCategories(uid: getUserInfo().uid)
-    }
+//    init() {
+//        categoryVM.fetchAllCategories()
+//        categoryVM.fetchMyCategories(uid: user.uid)
+//    }
     
     var body: some View {
-        MainView(isSignIn: $isSignIn, categoryVM: categoryVM)
+        MainView(isSignIn: $isSignIn, categoryVM: categoryVM, user: user)
             .fullScreenCover(isPresented: $isSignIn, content: {
                 QuickSignInWithApple()
                     .frame(maxWidth: .infinity)
@@ -35,6 +37,13 @@ struct ContentView: View {
                     .padding(.bottom, 60)
                     .padding(.horizontal, 17)
             })
+            .task {
+                getUserInfo({ data in
+                    if data != nil {
+                        user = data!
+                    }
+                })
+            }
     }
     
     func appleLogin() {

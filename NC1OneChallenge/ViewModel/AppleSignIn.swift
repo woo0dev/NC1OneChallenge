@@ -145,6 +145,25 @@ struct QuickSignInWithApple: UIViewRepresentable {
     }
 }
 
-func getUserInfo() -> User {
-    return User(uid: Auth.auth().currentUser?.uid != nil ? Auth.auth().currentUser!.uid : "", name: Auth.auth().currentUser?.displayName != nil ? Auth.auth().currentUser!.displayName! : "")
+func getUserInfo(_ completion: @escaping (_ data: User?) -> Void) {
+    let uid = Auth.auth().currentUser?.uid != nil ? Auth.auth().currentUser!.uid : ""
+    var user = User(uid: "", name: "")
+    
+    let g = DispatchGroup()
+    g.enter()
+    
+    Firestore.firestore().collection("User").document(uid).getDocument { document, error in
+        if let document = document, document.exists {
+            user = User(uid: uid, name: document["name"] as? String ?? "")
+            g.leave()
+        } else {
+            print("Document does not exist")
+            completion(nil)
+            g.leave()
+        }
+        g.notify(queue: .main) {
+            completion(user)
+        }
+        return
+    }
 }

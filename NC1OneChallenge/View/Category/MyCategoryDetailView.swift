@@ -15,6 +15,7 @@ struct MyCategoryDetailView: View {
     var category: Category
     var categoryVM: CategoryVM
     var record = RecordVM()
+    var user: User
     
     var body: some View {
         VStack {
@@ -41,7 +42,7 @@ struct MyCategoryDetailView: View {
             VStack(alignment: .center) {
                 HStack(alignment: .center) {
                     Button(action: {
-                        record.addRecord(record: Record(userUid: getUserInfo().uid, userName: getUserInfo().name, categoryName: category.categoryName, date: dateFormat(Date())))
+                        record.addRecord(record: Record(userUid: user.uid, userName: user.name, categoryName: category.categoryName, date: dateFormat(Date())))
                         self.presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Text("추가")
@@ -52,7 +53,7 @@ struct MyCategoryDetailView: View {
                     .border(Color("MainColor"), width: 2)
                 }
                 Button(action: {
-                    categoryVM.deleteParticipantCategory(category: category, userUid: getUserInfo().uid)
+                    categoryVM.deleteParticipantCategory(category: category, userUid: user.uid)
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("즐겨찾기 삭제")
@@ -65,7 +66,7 @@ struct MyCategoryDetailView: View {
         }
         .navigationBarTitle("", displayMode: .inline)
         .task {
-            record.fetchMyRecord(categoryName: category.categoryName, userUid: getUserInfo().uid, { data in
+            record.fetchMyRecord(categoryName: category.categoryName, userUid: user.uid, { data in
                 if !(data.isEmpty) {
                     self.records = data
                 }
