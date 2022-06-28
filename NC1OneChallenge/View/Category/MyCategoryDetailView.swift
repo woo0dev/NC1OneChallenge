@@ -30,8 +30,8 @@ struct MyCategoryDetailView: View {
             VStack(alignment:.leading, spacing: 3) {
                 Text("내 기록")
                     .font(.title2)
-                Text("총 횟수: \(records.count)")
-                ForEach(records, id: \.self) { record in
+                Text("총 횟수: \(record.myRecord.count)")
+                ForEach(record.myRecord, id: \.self) { record in
                     Text(record.date)
                 }
             }
@@ -66,11 +66,12 @@ struct MyCategoryDetailView: View {
         }
         .navigationBarTitle("", displayMode: .inline)
         .task {
-            record.fetchMyRecord(categoryName: category.categoryName, userUid: user.uid, { data in
-                if !(data.isEmpty) {
-                    self.records = data
-                }
-            })
+//            record.fetchMyRecord(categoryName: category.categoryName, userUid: user.uid, { data in
+//                if !(data.isEmpty) {
+//                    self.records = data
+//                }
+//            })
+            try? await self.record.fetchMyRecord(categoryName: category.categoryName, userUid: user.uid)
         }
     }
     var backButton : some View { Button(action: {
