@@ -31,8 +31,10 @@ struct MyCategoryDetailView: View {
                 Text("내 기록")
                     .font(.title2)
                 Text("총 횟수: \(record.myRecord.count)")
-                ForEach(record.myRecord, id: \.self) { record in
-                    Text(record.date)
+                ScrollView() {
+                    ForEach(record.myRecord, id: \.self) { record in
+                        Text(record.date)
+                    }
                 }
             }
             .frame(maxWidth: .infinity-30, alignment: .leading)
