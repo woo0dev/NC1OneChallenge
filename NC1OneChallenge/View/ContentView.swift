@@ -20,13 +20,13 @@ struct ContentView: View {
     
     var categoryVM = CategoryVM()
 
-//    init() {
-//        categoryVM.fetchAllCategories()
-//        categoryVM.fetchMyCategories(uid: user.uid)
-//    }
+    init() {
+        categoryVM.fetchAllCategories()
+        categoryVM.fetchMyCategories(uid: user.uid)
+    }
     
     var body: some View {
-        MainView(isSignIn: $isSignIn, categoryVM: categoryVM, user: user)
+        MainView(isSignIn: $isSignIn, user: $user, categoryVM: categoryVM)
             .fullScreenCover(isPresented: $isSignIn, content: {
                 QuickSignInWithApple()
                     .frame(maxWidth: .infinity)
@@ -38,11 +38,7 @@ struct ContentView: View {
                     .padding(.horizontal, 17)
             })
             .task {
-                getUserInfo({ data in
-                    if data != nil {
-                        user = data!
-                    }
-                })
+                try? await user = getUserInfo()
             }
     }
     

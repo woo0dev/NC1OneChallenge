@@ -12,18 +12,18 @@ import AuthenticationServices
 
 struct MainView: View {
     @Binding var isSignIn: Bool
+    @Binding var user: User
     
     @State private var selectedSide: CategoryPicker = .all
     
     var categoryVM: CategoryVM
-    var user: User
     
-    init(isSignIn: Binding<Bool>, categoryVM: CategoryVM, user: User) {
+    init(isSignIn: Binding<Bool>, user: Binding<User>, categoryVM: CategoryVM) {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color("MainColor"))
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         self._isSignIn = isSignIn
+        self._user = user
         self.categoryVM = categoryVM
-        self.user = user
     }
     
     var body: some View {
@@ -43,6 +43,7 @@ struct MainView: View {
                 
             }
             .task {
+                try? await user = getUserInfo()
                 self.categoryVM.fetchAllCategories()
                 self.categoryVM.fetchMyCategories(uid: user.uid)
             }

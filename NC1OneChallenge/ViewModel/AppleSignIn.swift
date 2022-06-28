@@ -145,25 +145,8 @@ struct QuickSignInWithApple: UIViewRepresentable {
     }
 }
 
-func getUserInfo(_ completion: @escaping (_ data: User?) -> Void) {
+func getUserInfo() async throws -> User {
     let uid = Auth.auth().currentUser?.uid != nil ? Auth.auth().currentUser!.uid : ""
-    var user = User(uid: "", name: "")
-    
-    let g = DispatchGroup()
-    g.enter()
-    
-    Firestore.firestore().collection("User").document(uid).getDocument { document, error in
-        if let document = document, document.exists {
-            user = User(uid: uid, name: document["name"] as? String ?? "")
-            g.leave()
-        } else {
-            print("Document does not exist")
-            completion(nil)
-            g.leave()
-        }
-        g.notify(queue: .main) {
-            completion(user)
-        }
-        return
-    }
+    let data = try await Firestore.firestore().collection("User").document(uid).getDocument().data()
+    return User(uid: data?["uid"] as? String ?? "", name: data?["name"] as? String ?? "")
 }
