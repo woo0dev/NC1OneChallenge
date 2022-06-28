@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct MyCategoryDetailView: View {
+    @Environment(\.calendar) var calendar
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @State var dates: [String] = []
     @State var records = [Record(recordUid: "", userUid: "", userName: "", categoryName: "", date: "")]
+    @State private var showModal = false
+    
+    private var year: DateInterval {
+        calendar.dateInterval(of: .month, for: Date())!
+    }
     
     var category: Category
     var categoryVM: CategoryVM
@@ -44,7 +51,7 @@ struct MyCategoryDetailView: View {
             VStack(alignment: .center) {
                 HStack(alignment: .center) {
                     Button(action: {
-                        record.addRecord(record: Record(userUid: user.uid, userName: user.name, categoryName: category.categoryName, date: dateFormat(Date())))
+                        record.addRecord(record: Record(userUid: user.uid, userName: user.name, categoryName: category.categoryName, date: dateToStringFormat(Date())))
                         self.presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Text("추가")
@@ -67,12 +74,37 @@ struct MyCategoryDetailView: View {
             }
         }
         .navigationBarTitle("", displayMode: .inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing, content: {
+                Button(action: {
+                    dates = record.myRecord.map {
+                        return dateWithTimeRemoved(stringToDateFormat($0.date))
+                    }
+                    self.showModal = true
+                }, label: {
+                    Image(systemName: "calendar")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .foregroundColor(Color("BlackColor"))
+                })
+                .sheet(isPresented: self.$showModal) {
+                    CalendarView(interval: self.year) { date in
+                        Text("30")
+                            .hidden()
+                            .padding(8)
+                            .background(Color("\(calendarColor(dates, date: dateWithTimeRemoved(date)))"))
+                            .clipShape(Rectangle())
+                            .cornerRadius(4)
+                            .padding(4)
+                            .overlay(
+                                Text(String(self.calendar.component(.day, from: date)))
+                                    .foregroundColor(Color.black)
+                            )
+                    }
+                }
+            })
+        }
         .task {
-//            record.fetchMyRecord(categoryName: category.categoryName, userUid: user.uid, { data in
-//                if !(data.isEmpty) {
-//                    self.records = data
-//                }
-//            })
             try? await self.record.fetchMyRecord(categoryName: category.categoryName, userUid: user.uid)
         }
     }
