@@ -7,14 +7,36 @@
 
 import SwiftUI
 
-struct InfoView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+import AuthenticationServices
+import Firebase
 
-struct InfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        InfoView()
+struct InfoView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @State var infoVM = InfoVM()
+    @State var count = 0
+    
+    var user: User
+    
+    var body: some View {
+        VStack {
+            Spacer()
+            VStack {
+                Text(user.name)
+                Text("\(count)")
+                Button(action: {
+                    try! Auth.auth().signOut()
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text("로그아웃")
+                })
+            }
+            Spacer()
+            Spacer()
+        }
+        .task {
+            try? await self.infoVM.fetchRecordCount(userUid: user.uid)
+            count = infoVM.recordCount
+        }
     }
 }

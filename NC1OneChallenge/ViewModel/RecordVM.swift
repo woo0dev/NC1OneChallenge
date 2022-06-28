@@ -14,6 +14,7 @@ class RecordVM: ObservableObject {
     let db = Firestore.firestore()
     var allRecord = [Record(recordUid: "", userUid: "", userName: "", categoryName: "", date: "")]
     var myRecord = [Record(recordUid: "", userUid: "", userName: "", categoryName: "", date: "")]
+    var recordCount = 0
     
     func addRecord(record: Record) {
         db.collection("Record").document(record.recordUid).setData(record.dictionary)

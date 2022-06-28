@@ -50,7 +50,7 @@ struct MainView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     NavigationLink(destination: {
-                        InfoView()
+                        InfoView(user: user)
                     }, label: {
                         Image(systemName: "person")
                     })

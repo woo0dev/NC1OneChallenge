@@ -39,6 +39,7 @@
 		E2C8D52D2868B7F600273DBE /* MyCategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D52C2868B7F600273DBE /* MyCategoryListView.swift */; };
 		E2C8D5342869E88100273DBE /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D5332869E88100273DBE /* InfoView.swift */; };
 		E2C8D5362869F2C200273DBE /* MyCategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D5352869F2C200273DBE /* MyCategoryDetailView.swift */; };
+		E2C8D539286B81FA00273DBE /* InfoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D538286B81FA00273DBE /* InfoVM.swift */; };
 		E2F6A0B5281ADD80006F5371 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */; };
 		E2F6A0BD281BC86B006F5371 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0BC281BC86B006F5371 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		E2C8D52C2868B7F600273DBE /* MyCategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCategoryListView.swift; sourceTree = "<group>"; };
 		E2C8D5332869E88100273DBE /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		E2C8D5352869F2C200273DBE /* MyCategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCategoryDetailView.swift; sourceTree = "<group>"; };
+		E2C8D538286B81FA00273DBE /* InfoVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVM.swift; sourceTree = "<group>"; };
 		E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		E2F6A0BC281BC86B006F5371 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +116,7 @@
 				E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */,
 				E2C8D50F28644D4000273DBE /* CategoryVM.swift */,
 				E2C8D5112865F87300273DBE /* RecordVM.swift */,
+				E2C8D538286B81FA00273DBE /* InfoVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				E2A13238281AC81600AE12BC /* NC1OneChallengeApp.swift in Sources */,
 				E2C8D5292868A6F400273DBE /* MainView.swift in Sources */,
 				E2C8D51028644D4000273DBE /* CategoryVM.swift in Sources */,
+				E2C8D539286B81FA00273DBE /* InfoVM.swift in Sources */,
 				E231CEC0282170ED0010955C /* DateFormat.swift in Sources */,
 				E26F5AE42821837D00EA0916 /* ProfileView.swift in Sources */,
 				E2A1324C281AD1D700AE12BC /* AllCategoryDetailView.swift in Sources */,
