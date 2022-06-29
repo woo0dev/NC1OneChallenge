@@ -35,16 +35,11 @@ struct AddCategoryView: View {
             .padding(.leading, 15)
             Spacer()
             VStack(alignment: .center) {
-                Button(action: {
+                Button("만들기") {
                     categoryVM.addCategory(category: Category(adminName: user.name, participants: [user.uid], categoryName: title, categoryDescription: description))
                     self.presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Text("만들기")
-                })
-                .frame(width: 230, height: 45)
-                .font(.system(size: 14))
-                .foregroundColor(Color("BlackColor"))
-                .border(Color("MainColor"), width: 2)
+                }
+                .buttonStyle(MyButtonStyle())
             }
         }
     }

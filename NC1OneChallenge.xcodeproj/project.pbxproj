@@ -40,6 +40,7 @@
 		E2C8D5342869E88100273DBE /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D5332869E88100273DBE /* InfoView.swift */; };
 		E2C8D5362869F2C200273DBE /* MyCategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D5352869F2C200273DBE /* MyCategoryDetailView.swift */; };
 		E2C8D539286B81FA00273DBE /* InfoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D538286B81FA00273DBE /* InfoVM.swift */; };
+		E2C8D53B286CA9C400273DBE /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C8D53A286CA9C400273DBE /* Style.swift */; };
 		E2F6A0B5281ADD80006F5371 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */; };
 		E2F6A0BD281BC86B006F5371 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6A0BC281BC86B006F5371 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		E2C8D5332869E88100273DBE /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		E2C8D5352869F2C200273DBE /* MyCategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCategoryDetailView.swift; sourceTree = "<group>"; };
 		E2C8D538286B81FA00273DBE /* InfoVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVM.swift; sourceTree = "<group>"; };
+		E2C8D53A286CA9C400273DBE /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		E2F6A0B4281ADD80006F5371 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		E2F6A0BC281BC86B006F5371 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,6 +207,7 @@
 			children = (
 				E231CEBF282170ED0010955C /* DateFormat.swift */,
 				E2C8D50D28644D2700273DBE /* ColorExtension.swift */,
+				E2C8D53A286CA9C400273DBE /* Style.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				E26F5AE42821837D00EA0916 /* ProfileView.swift in Sources */,
 				E2A1324C281AD1D700AE12BC /* AllCategoryDetailView.swift in Sources */,
 				E2C8D52D2868B7F600273DBE /* MyCategoryListView.swift in Sources */,
+				E2C8D53B286CA9C400273DBE /* Style.swift in Sources */,
 				E2C8D5122865F87300273DBE /* RecordVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

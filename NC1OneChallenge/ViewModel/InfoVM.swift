@@ -13,6 +13,7 @@ import FirebaseFirestore
 class InfoVM: ObservableObject {
     let db = Firestore.firestore()
     var recordCount = 0
+    var recordDates = [""]
     
     func fetchRecordCount(userUid: String) async throws {
         var isCounts: [Bool]
@@ -26,5 +27,18 @@ class InfoVM: ObservableObject {
             }
         })
         self.recordCount = (isCounts.filter { $0 == true }).count
+    }
+    
+    func fetchMyAllRecord(userUid: String) async throws {
+        let documents = try await db.collection("Record").getDocuments()
+        recordDates = documents.documents.map({ (queryDocumentSnapshot) -> String in
+            let data = queryDocumentSnapshot.data()
+            if (data["userUid"] as? String ?? "") == userUid {
+                return data["date"] as? String ?? ""
+            } else {
+                return ""
+            }
+        })
+        self.recordDates = self.recordDates.filter { $0 != "" }
     }
 }
