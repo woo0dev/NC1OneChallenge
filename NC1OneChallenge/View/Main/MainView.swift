@@ -30,6 +30,7 @@ struct MainView: View {
     
     var body: some View {
         if isSignIn {
+            Spacer()
             QuickSignInWithApple()
                 .frame(maxWidth: .infinity)
                 .frame(height: 56, alignment: .center)

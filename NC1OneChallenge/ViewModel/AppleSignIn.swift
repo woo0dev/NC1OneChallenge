@@ -138,7 +138,7 @@ struct QuickSignInWithApple: UIViewRepresentable {
     typealias UIViewType = ASAuthorizationAppleIDButton
     
     func makeUIView(context: Context) -> UIViewType {
-        return ASAuthorizationAppleIDButton()
+        return ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
