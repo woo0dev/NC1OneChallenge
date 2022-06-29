@@ -13,6 +13,8 @@ import Firebase
 struct InfoView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @Binding var isSignIn: Bool
+    
     @State var infoVM = InfoVM()
     @State var count = 0
     
@@ -25,7 +27,7 @@ struct InfoView: View {
                 Text(user.name)
                 Text("\(count)")
                 Button(action: {
-                    try! Auth.auth().signOut()
+                    isSignIn = true
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("로그아웃")
