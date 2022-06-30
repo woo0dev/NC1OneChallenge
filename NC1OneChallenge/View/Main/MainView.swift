@@ -30,20 +30,28 @@ struct MainView: View {
     
     var body: some View {
         if isSignIn {
-            Spacer()
-            QuickSignInWithApple()
-                .frame(maxWidth: .infinity)
-                .frame(height: 56, alignment: .center)
-                .onTapGesture {
-                    appleLogin()
-                }
-                .padding(.bottom, 60)
-                .padding(.horizontal, 17)
-                .task {
-                    if Auth.auth().currentUser != nil {
-                        try! Auth.auth().signOut()
+            VStack {
+                Spacer()
+                Text("1")
+                    .font(.custom("AppleSDGothicNeo-Bold", size: 100))
+                Text("OneChallenge")
+                    .font(.custom("AppleSDGothicNeo-Bold", size: 36))
+                Spacer()
+                QuickSignInWithApple()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 56, alignment: .center)
+                    .onTapGesture {
+                        appleLogin()
                     }
-                }
+                    .padding(.bottom, 60)
+                    .padding(.horizontal, 17)
+                    .task {
+                        if Auth.auth().currentUser != nil {
+                            try! Auth.auth().signOut()
+                        }
+                    }
+            }
+            .background(Color("MainColor"))
         } else {
             NavigationView {
                 VStack {
