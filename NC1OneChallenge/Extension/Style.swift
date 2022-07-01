@@ -14,10 +14,10 @@ struct MyButtonStyle: ButtonStyle {
         configuration.label
             .font(.system(size: 18))
             .padding()
-            .foregroundColor(Color("WhiteColor"))
+            .foregroundColor(Color("ButtonFontColor"))
             .background(RoundedRectangle(cornerRadius: cornerRadius)
                 .fill(Color("MainColor"))
                 .frame(width: 230, height: 50))
-            .scaleEffect(configuration.isPressed ? 0.5 : 1.0)
+            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
     }
 }

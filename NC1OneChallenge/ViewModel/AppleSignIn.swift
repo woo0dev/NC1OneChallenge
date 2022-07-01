@@ -17,7 +17,10 @@ class AppleAuthCoordinator: NSObject {
         self._isSignIn = isSignIn
     }
     
-    func startAppleLogin() {
+    func startAppleLogin(_ completion: @escaping (_ data: String) -> Void) {
+        let g = DispatchGroup()
+        g.enter()
+        
         let nonce = randomNonceString()
         currentNonce = nonce
         let appleIDProvider = ASAuthorizationAppleIDProvider()
@@ -29,6 +32,14 @@ class AppleAuthCoordinator: NSObject {
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
         authorizationController.performRequests()
+        
+        g.leave()
+        
+        g.notify(queue: .main) {
+            completion(nonce)
+        }
+        
+        return
     }
     
     private func sha256(_ input: String) -> String {
@@ -97,11 +108,13 @@ extension AppleAuthCoordinator: ASAuthorizationControllerDelegate {
                     print(error!.localizedDescription)
                     return
                 }
+                if appleIDCredential.email != nil {
+                    self.db.collection("User").document(Auth.auth().currentUser!.uid).setData(["\(Auth.auth().currentUser!.uid)": ["uid": Auth.auth().currentUser!.uid, "name": "\(appleIDCredential.fullName!.familyName!)"+"\(appleIDCredential.fullName!.givenName!)"]])
+                }
                 self.isSignIn = false
             }
             if let _ = appleIDCredential.email {
                 print("111111 ================= 첫 로그인")
-                db.collection("User").document(Auth.auth().currentUser!.uid).setData(["\(Auth.auth().currentUser!.uid)": ["uid": Auth.auth().currentUser!.uid, "name": "\(appleIDCredential.fullName!.familyName!)"+"\(appleIDCredential.fullName!.givenName!)"]])
             } else {
                 print("222222 ================== 로그인 했었음")
             }

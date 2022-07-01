@@ -98,7 +98,9 @@ struct MainView: View {
     
     func appleLogin() {
         appleLoginCoordinator = AppleAuthCoordinator(window: window, isSignIn: $isSignIn)
-        appleLoginCoordinator?.startAppleLogin()
+        appleLoginCoordinator?.startAppleLogin({ data in
+            print(data)
+        })
     }
 }
 

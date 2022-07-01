@@ -21,7 +21,6 @@
 		E26F5ADE28217EDE00EA0916 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = E26F5ADD28217EDE00EA0916 /* FirebaseStorageCombine-Community */; };
 		E26F5AE028217EDE00EA0916 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = E26F5ADF28217EDE00EA0916 /* FirebaseStorageSwift-Beta */; };
 		E26F5AE2282180A400EA0916 /* AppleSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26F5AE1282180A400EA0916 /* AppleSignIn.swift */; };
-		E26F5AE42821837D00EA0916 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26F5AE32821837D00EA0916 /* ProfileView.swift */; };
 		E2A13238281AC81600AE12BC /* NC1OneChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A13237281AC81600AE12BC /* NC1OneChallengeApp.swift */; };
 		E2A1323A281AC81600AE12BC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A13239281AC81600AE12BC /* ContentView.swift */; };
 		E2A1323C281AC81700AE12BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2A1323B281AC81700AE12BC /* Assets.xcassets */; };
@@ -50,7 +49,6 @@
 		E231CEBF282170ED0010955C /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		E26F5AC828217DFD00EA0916 /* NC1OneChallenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NC1OneChallenge.entitlements; sourceTree = "<group>"; };
 		E26F5AE1282180A400EA0916 /* AppleSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignIn.swift; sourceTree = "<group>"; };
-		E26F5AE32821837D00EA0916 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E2A13234281AC81600AE12BC /* NC1OneChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NC1OneChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A13237281AC81600AE12BC /* NC1OneChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NC1OneChallengeApp.swift; sourceTree = "<group>"; };
 		E2A13239281AC81600AE12BC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 		E2C8D50928644B1F00273DBE /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				E26F5AE32821837D00EA0916 /* ProfileView.swift */,
 				E231CEBD2821201A0010955C /* CalendarView.swift */,
 				E2C8D5282868A6F400273DBE /* MainView.swift */,
 			);
@@ -324,7 +321,6 @@
 				E2C8D51028644D4000273DBE /* CategoryVM.swift in Sources */,
 				E2C8D539286B81FA00273DBE /* InfoVM.swift in Sources */,
 				E231CEC0282170ED0010955C /* DateFormat.swift in Sources */,
-				E26F5AE42821837D00EA0916 /* ProfileView.swift in Sources */,
 				E2A1324C281AD1D700AE12BC /* AllCategoryDetailView.swift in Sources */,
 				E2C8D52D2868B7F600273DBE /* MyCategoryListView.swift in Sources */,
 				E2C8D53B286CA9C400273DBE /* Style.swift in Sources */,
@@ -462,6 +458,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NC1OneChallenge/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OneChallenge;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -493,6 +490,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NC1OneChallenge/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OneChallenge;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
