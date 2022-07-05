@@ -41,4 +41,9 @@ class InfoVM: ObservableObject {
         })
         self.recordDates = self.recordDates.filter { $0 != "" }
     }
+    
+    func editUserName(name: String) {
+        let uid = Auth.auth().currentUser?.uid != nil ? Auth.auth().currentUser!.uid : ""
+        Firestore.firestore().collection("User").document(uid).setData(["\(Auth.auth().currentUser!.uid)": ["uid": Auth.auth().currentUser!.uid, "name": name]])
+    }
 }

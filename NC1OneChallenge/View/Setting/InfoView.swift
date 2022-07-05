@@ -20,8 +20,7 @@ struct InfoView: View {
     @State var dates: [String] = []
     @State var infoVM = InfoVM()
     @State private var showModal = false
-    
-    var user: User
+    @State var user: User
     
     private var year: DateInterval {
         calendar.dateInterval(of: .month, for: Date())!
@@ -31,7 +30,7 @@ struct InfoView: View {
         VStack {
             VStack {
                 VStack {
-                    Text(user.name)
+                    Text("\(user.name)님")
                         .font(.title2)
                     Text("총 실천 횟수: \(count)")
                 }

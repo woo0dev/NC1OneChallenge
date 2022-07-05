@@ -109,7 +109,7 @@ extension AppleAuthCoordinator: ASAuthorizationControllerDelegate {
                     return
                 }
                 if appleIDCredential.email != nil {
-                    self.db.collection("User").document(Auth.auth().currentUser!.uid).setData(["\(Auth.auth().currentUser!.uid)": ["uid": Auth.auth().currentUser!.uid, "name": "\(appleIDCredential.fullName!.familyName!)"+"\(appleIDCredential.fullName!.givenName!)"]])
+                    self.db.collection("User").document(Auth.auth().currentUser!.uid).setData(["uid": Auth.auth().currentUser!.uid, "name": "\(appleIDCredential.fullName!.familyName!)"+"\(appleIDCredential.fullName!.givenName!)"])
                 }
                 self.isSignIn = false
             }
