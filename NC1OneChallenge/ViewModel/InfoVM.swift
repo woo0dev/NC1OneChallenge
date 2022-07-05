@@ -13,7 +13,7 @@ import FirebaseFirestore
 class InfoVM: ObservableObject {
     let db = Firestore.firestore()
     var recordCount = 0
-    var recordDates = [""]
+    var records = [Record(recordUid: "", userUid: "", userName: "", categoryName: "", date: "")]
     
     func fetchRecordCount(userUid: String) async throws {
         var isCounts: [Bool]
@@ -31,15 +31,20 @@ class InfoVM: ObservableObject {
     
     func fetchMyAllRecord(userUid: String) async throws {
         let documents = try await db.collection("Record").getDocuments()
-        recordDates = documents.documents.map({ (queryDocumentSnapshot) -> String in
+        records = documents.documents.map({ (queryDocumentSnapshot) -> Record in
             let data = queryDocumentSnapshot.data()
             if (data["userUid"] as? String ?? "") == userUid {
-                return data["date"] as? String ?? ""
+                let recordUid = data["recordUid"] as? String ?? ""
+                let userUid = data["userUid"] as? String ?? ""
+                let userName = data["userName"] as? String ?? ""
+                let categoryName = data["categoryName"] as? String ?? ""
+                let date = data["date"] as? String ?? ""
+                return Record(recordUid: recordUid, userUid: userUid, userName: userName, categoryName: categoryName, date: date)
             } else {
-                return ""
+                return Record(recordUid: "", userUid: "", userName: "", categoryName: "", date: "")
             }
         })
-        self.recordDates = self.recordDates.filter { $0 != "" }
+        self.records = self.records.filter { $0.recordUid != "" }
     }
     
     func editUserName(name: String) {

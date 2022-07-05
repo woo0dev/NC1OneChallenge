@@ -36,8 +36,8 @@ struct InfoView: View {
                 }
                 VStack {
                     ScrollView() {
-                        ForEach(infoVM.recordDates, id: \.self) { date in
-                            Text(date)
+                        ForEach(infoVM.records, id: \.self) { record in
+                            Text("\(record.categoryName): \(record.date)")
                         }
                     }
                 }
@@ -53,8 +53,8 @@ struct InfoView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing, content: {
                 Button(action: {
-                    dates = infoVM.recordDates.map {
-                        return dateWithTimeRemoved(stringToDateFormat($0))
+                    dates = infoVM.records.map {
+                        return dateWithTimeRemoved(stringToDateFormat($0.date))
                     }
                     self.showModal = true
                 }, label: {
