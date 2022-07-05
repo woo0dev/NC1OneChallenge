@@ -22,10 +22,6 @@ struct MainView: View {
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color("MainColor"))
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        if !isSignIn {
-            categoryVM.fetchAllCategories()
-            categoryVM.fetchMyCategories(uid: user.uid)
-        }
     }
     
     var body: some View {
@@ -63,7 +59,7 @@ struct MainView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .padding()
                     
-                    ChosenCategoryView(categoryVM: categoryVM, categories: selectedSide == .all ? categoryVM.allCategories : categoryVM.myCategories, selectedSide: selectedSide, user: user)
+                    ChosenCategoryView(categoryVM: categoryVM, selectedSide: selectedSide, user: user)
                     
                     Spacer()
                     
@@ -78,7 +74,7 @@ struct MainView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: {
-                            AddCategoryView(categoryVM: categoryVM, user: user)
+                            AddCategoryView(categoryVM: $categoryVM, user: user)
                         }, label: {
                             Image(systemName: "plus")
                         })
@@ -90,7 +86,7 @@ struct MainView: View {
                 if !isSignIn {
                     try? await user = getUserInfo()
                     self.categoryVM.fetchAllCategories()
-                    self.categoryVM.fetchMyCategories(uid: user.uid)
+                    try? await self.categoryVM.fetchMyCategories(uid: user.uid)
                 }
             }
         }
@@ -105,17 +101,16 @@ struct MainView: View {
 }
 
 struct ChosenCategoryView: View {
-    var categoryVM: CategoryVM
-    var categories: [Category]
+    @State var categoryVM: CategoryVM
     var selectedSide: CategoryPicker
     var user: User
     
     var body: some View {
         switch selectedSide {
         case .all:
-            AllCategoryListView(categoryVM: categoryVM, categories: categories, user: user)
+            AllCategoryListView(categoryVM: $categoryVM, user: user)
         case .my:
-            MyCategoryListView(categoryVM: categoryVM, categories: categories, user: user)
+            MyCategoryListView(categoryVM: $categoryVM, user: user)
         }
     }
 }

@@ -20,7 +20,7 @@ struct MyCategoryDetailView: View {
     }
     
     var category: Category
-    var categoryVM: CategoryVM
+    @Binding var categoryVM: CategoryVM
     var record = RecordVM()
     var user: User
     
@@ -63,6 +63,11 @@ struct MyCategoryDetailView: View {
                 }
                 Button(action: {
                     categoryVM.deleteParticipantCategory(category: category, userUid: user.uid)
+                    Task {
+                        do {
+                            try? await self.categoryVM.fetchMyCategories(uid: user.uid)
+                        }
+                    }
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("즐겨찾기 삭제")

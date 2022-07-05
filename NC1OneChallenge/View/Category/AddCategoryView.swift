@@ -13,7 +13,7 @@ struct AddCategoryView: View {
     @State var title = ""
     @State var description = ""
     
-    var categoryVM: CategoryVM
+    @Binding var categoryVM: CategoryVM
     var user: User
     
     var body: some View {
@@ -37,6 +37,11 @@ struct AddCategoryView: View {
             VStack(alignment: .center) {
                 Button("만들기") {
                     categoryVM.addCategory(category: Category(adminName: user.name, participants: [user.uid], categoryName: title, categoryDescription: description))
+                    Task {
+                        do {
+                            try? await self.categoryVM.fetchMyCategories(uid: user.uid)
+                        }
+                    }
                     self.presentationMode.wrappedValue.dismiss()
                 }
                 .buttonStyle(MyButtonStyle())

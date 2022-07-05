@@ -12,7 +12,7 @@ struct AllCategoryDetailView: View {
     
     @State var category: Category
     
-    var categoryVM: CategoryVM
+    @Binding var categoryVM: CategoryVM
     var user: User
     
     var body: some View {
@@ -34,6 +34,11 @@ struct AllCategoryDetailView: View {
                     if category.participants.contains(user.uid) {
                         Button(action: {
                             categoryVM.deleteParticipantCategory(category: category, userUid: user.uid)
+                            Task {
+                                do {
+                                    try? await self.categoryVM.fetchMyCategories(uid: user.uid)
+                                }
+                            }
                             self.presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Text("즐겨찾기 삭제")
@@ -45,6 +50,11 @@ struct AllCategoryDetailView: View {
                     } else {
                         Button(action: {
                             categoryVM.addParticipantCategory(category: category, userUid: user.uid)
+                            Task {
+                                do {
+                                    try? await self.categoryVM.fetchMyCategories(uid: user.uid)
+                                }
+                            }
                             self.presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Text("즐겨찾기 추가")

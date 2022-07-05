@@ -95,31 +95,24 @@ class CategoryVM: ObservableObject {
         return
     }
     
-    func fetchMyCategories(uid: String) {
-        db.collection("Category").getDocuments() { (querySnapShot, error) in
-            guard let documents = querySnapShot?.documents else {
-                print("No Documents")
-                return
-            }
-            
-            let results = documents.map({ (queryDocumentSnapshot) -> Category in
-                let data = queryDocumentSnapshot.data()
-                if (data["participants"] as? [String] ?? [""]).contains(uid) {
-                    let categoryUid = data["categoryUid"] as? String ?? ""
-                    let adminName = data["adminName"] as? String ?? ""
-                    let participants = data["participants"] as? [String] ?? [""]
-                    let categoryName = data["categoryName"] as? String ?? ""
-                    let categoryDescription = data["categoryDescription"] as? String ?? ""
+    func fetchMyCategories(uid: String) async throws {
+        let documents = try await db.collection("Category").getDocuments()
+        
+        let results = documents.documents.map({ (queryDocumentSnapshot) -> Category in
+            let data = queryDocumentSnapshot.data()
+            if (data["participants"] as? [String] ?? [""]).contains(uid) {
+                let categoryUid = data["categoryUid"] as? String ?? ""
+                let adminName = data["adminName"] as? String ?? ""
+                let participants = data["participants"] as? [String] ?? [""]
+                let categoryName = data["categoryName"] as? String ?? ""
+                let categoryDescription = data["categoryDescription"] as? String ?? ""
 //                    let categoryImage = data["categoryImage"] as? String ?? ""
-                    return Category(categoryUid: categoryUid, adminName: adminName, participants: participants, categoryName: categoryName, categoryDescription: categoryDescription)
-                } else {
-                    return Category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")
-                }
-            })
-            
-            self.myCategories = results.filter { $0.categoryUid != "" }
-        }
+                return Category(categoryUid: categoryUid, adminName: adminName, participants: participants, categoryName: categoryName, categoryDescription: categoryDescription)
+            } else {
+                return Category(categoryUid: "", adminName: "", participants: [""], categoryName: "", categoryDescription: "")
+            }
+        })
+        
+        self.myCategories = results.filter { $0.categoryUid != "" }
     }
-    
-
 }
