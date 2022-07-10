@@ -15,6 +15,7 @@ struct InfoView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @Binding var isSignIn: Bool
+    @Binding var isUser: Bool
     
     @State var count = 0
     @State var dates: [String] = []
@@ -43,6 +44,12 @@ struct InfoView: View {
                 }
                 Button("로그아웃") {
                     isSignIn = true
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+                .buttonStyle(MyButtonStyle())
+                Button("회원탈퇴") {
+                    isSignIn = true
+                    isUser = false
                     self.presentationMode.wrappedValue.dismiss()
                 }
                 .buttonStyle(MyButtonStyle())

@@ -16,6 +16,7 @@ struct MainView: View {
     @State private var appleLoginCoordinator: AppleAuthCoordinator?
     @State var categoryVM = CategoryVM()
     @State var isSignIn: Bool = Auth.auth().currentUser == nil ? true : false
+    @State var isUser = true
     @State private var selectedSide: CategoryPicker = .all
     @State var user = User(uid: "", name: "")
 
@@ -48,6 +49,20 @@ struct MainView: View {
                     }
             }
             .background(Color("MainColor"))
+            .task {
+                print("@")
+                print(isUser)
+                print("!")
+                if isUser == false {
+                    Auth.auth().currentUser?.delete { error in
+                        if error == nil {
+                            print("회원탈퇴 성공")
+                        } else {
+                            print("ERROR: \(error)")
+                        }
+                    }
+                }
+            }
         } else {
             NavigationView {
                 VStack {
@@ -67,7 +82,7 @@ struct MainView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         NavigationLink(destination: {
-                            InfoView(isSignIn: $isSignIn, user: user)
+                            InfoView(isSignIn: $isSignIn, isUser: $isUser, user: user)
                         }, label: {
                             Image(systemName: "person")
                         })
